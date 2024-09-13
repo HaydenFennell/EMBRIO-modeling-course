@@ -11,7 +11,6 @@ Welcome to the EMBRIO Multiscale Modeling Course!
    :caption: Contents:
 
    introduction
-   introToModeling
    numericalSolutionPDE
    equationsOfState
    
