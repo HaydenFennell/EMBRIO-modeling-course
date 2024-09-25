@@ -10,9 +10,18 @@ Welcome to the EMBRIO Multiscale Modeling Course!
    :maxdepth: 2
    :caption: Contents:
 
+   buildNotes
    introduction
+   introScientificComputing2
    numericalSolutionPDE
    equationsOfState
+   signalingPathwayDynamics
+   chemicalReactors
+   morphogenGradients
+   antibodyDetectionProject
+   toxinProject
+   circadianRhythmNotebookFinal
+   chemotaxisAdaptation
    appendix_notebookCatalog
    
 Indices and tables
