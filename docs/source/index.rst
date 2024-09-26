@@ -13,6 +13,7 @@ Welcome to the EMBRIO Multiscale Modeling Course!
    buildNotes
    introduction
    introScientificComputing2
+   introToModeling
    numericalSolutionPDE
    equationsOfState
    signalingPathwayDynamics
@@ -22,6 +23,7 @@ Welcome to the EMBRIO Multiscale Modeling Course!
    toxinProject
    circadianRhythmNotebookFinal
    chemotaxisAdaptation
+   acetaldehydeMetabolism
    appendix_notebookCatalog
    
 Indices and tables
