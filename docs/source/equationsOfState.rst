@@ -68,14 +68,14 @@ Law. Note we are not using Euler Method for this.
 
 
 
-.. image:: images/EquationsOfStateFiles/equationsOfState_5_0.png
+.. image:: images/equationsOfStateFiles/equationsOfState_5_0.png
 
 
 Notice that each color represents a different temperature. These lines
 are called isotherms. Under the ideal gas law all gases are supposed to
 act the same way at any given temperature.
 
-Now lets look at a real non-ideal gas: $ CO_2$
+Now lets look at a real non-ideal gas: CO\ :sub:`2`
 
 .. code:: 
 
@@ -102,7 +102,7 @@ Now lets look at a real non-ideal gas: $ CO_2$
 
 
 
-.. image:: images/EquationsOfStateFiles/equationsOfState_7_0.png
+.. image:: images/equationsOfStateFiles/equationsOfState_7_0.png
 
 
 **Reflection Questions:**
