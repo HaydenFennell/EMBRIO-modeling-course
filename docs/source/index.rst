@@ -24,6 +24,7 @@ Welcome to the EMBRIO Multiscale Modeling Course!
    circadianRhythmNotebookFinal
    chemotaxisAdaptation
    acetaldehydeMetabolism
+   smadNucleocytoplasmicShuttling_completed
    appendix_notebookCatalog
    
 Indices and tables
