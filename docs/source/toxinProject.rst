@@ -1,7 +1,7 @@
 Project: MAXTox Manufacturing
 =============================
 
-* View this page as an interactive Jupyter Notebook: `Click here <https://tinyurl.com/r5t66do>`_
+* To view this page as a fully interactive Jupyter Notebook, `click here <https://tinyurl.com/r5t66do>`_
 
 For this project, there are **FIVE** tasks that you need to complete. These tasks are integrated throughout this page. You can use the navigation bar on the right to navigate through each task. 
 
@@ -191,22 +191,9 @@ Hint: carefully look through the existing code before you jump in. Try to match 
     plt.ylabel('Toxin')
     plt.title('System Timeseries')
 
+.. image:: images/toxinProject_files/ToxinProject_3_1.png
 
-
-
-.. parsed-literal::
-
-    Text(0.5, 1.0, 'System Timeseries')
-
-
-
-
-.. image:: images/ToxinProject_files/ToxinProject_3_1.png
-
-
-
-.. image:: images/ToxinProject_files/ToxinProject_3_2.png
-
+.. image:: images/toxinProject_files/ToxinProject_3_2.png
 
 Task 3
 ~~~~~~
@@ -376,22 +363,9 @@ Hints: - what did you learn from your failure report that can help inform your s
     plt.ylabel('Toxin')
     plt.title('System Timeseries')
 
+.. image:: images/toxinProject_files/ToxinProject_7_1.png
 
-
-
-.. parsed-literal::
-
-    Text(0.5, 1.0, 'System Timeseries')
-
-
-
-
-.. image:: images/ToxinProject_files/ToxinProject_7_1.png
-
-
-
-.. image:: images/ToxinProject_files/ToxinProject_7_2.png
-
+.. image:: images/toxinProject_files/ToxinProject_7_2.png
 
 Task 5
 ~~~~~~
