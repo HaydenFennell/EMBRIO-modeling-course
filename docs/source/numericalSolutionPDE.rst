@@ -101,7 +101,7 @@ Taylor Series is an approximation of a function by the sum of an infinite series
     
 .. math: u(t) = u(a) + u'(a)(t-a)+\frac{u"(a)}{2!}(t-a)^2+\frac{u^{(3)}(a)}{3!}(t-a)^{3}+...+\frac{u^{(n)}(a)}{n!}(t-a)^n+...
 
-Where :math:`u'(a)` represents `math:`\large\frac{\partial u}{\partial t}`, :math:`u''(a)` represents :math:`\large\frac{\partial^2 u}{\partial t^2}`, etc.
+Where :math:`u'(a)` represents :math:`\large\frac{\partial u}{\partial t}`, :math:`u''(a)` represents :math:`\large\frac{\partial^2 u}{\partial t^2}`, etc.
 
 To understand the above equation fully, let's look at an example:
 
@@ -140,7 +140,7 @@ As we increase the number of terms the approximation becomes closer to the actua
 
 This form of approximation requires a lot of information about the function, typically more than we know. Therefore we will need to truncate all but one of the differential terms and then iterate the function across a domain.
 
-Let's return to our first order differential, :math:`\frac{\partial u}{\partial t}` that we are trying to approximate numerically. Using the definition of the Taylor series expansion given above, and remember that we decided to index time with :math:`n`, the function u(t) can be approximated by:
+Let's return to our first order differential, :math:`\frac{\partial u}{\partial t}` that we are trying to approximate numerically. Using the definition of the Taylor series expansion given above, and remember that we decided to index time with :math:`n`, the function :math:`u(t)` can be approximated by:
 
 1. Setting :math:`a` equal to time :math:`n`, and :math:`t` equal to time :math:`n+1` to get expression T1 below, and
 2. Setting :math:`a` equal to time :math:`n`, and :math:`t` equal to time :math:`n-1` to get expression T2 below.
@@ -160,6 +160,7 @@ Finite difference method for first order derivatives (reaction)
 ---------------------------------------------------------------
 
 Now looking at expressions T1 and T2 above, you should see that we have some terms that contain differentials (:math:`\frac{\partial u}{\partial t}`, :math:`\frac{\partial ^2 u}{\partial t^2}`, etc), and some terms representing function values at discrete intervals (:math:`u_n`, :math:`u_{n+1}`, etc.). So we are getting closer to finding a discrete representation for our differentials. In this section we will use expressions T1 and T2 to obtain **3 finite difference schemes** for first order differentials.
+
 * Forward Euler, a.k.a. Explicit Euler (this should look very familiar)
 * Backward Euler, a.k.a. Implicit Euler
 * 1st Order Central method
@@ -170,12 +171,11 @@ T1:
 
 .. math:: \large u_{n+1} = u_n + \Delta t \frac{\partial u}{\partial t} + O(\Delta t)
 
-
 T2: 
 
 .. math:: \large u_{n-1} = u_n - \Delta t \frac{\partial u}{\partial t} + O(\Delta t)
 
-It is important to note that this introduces a truncation error O(:math:`\Delta t`)
+It is important to note that this introduces a truncation error :math:`O(\Delta t)`
 
 If you now rearrange T1 and T2 to solve for the first order differential terms, you will obtain the forward and backward Euler method, respectively:
 
@@ -246,7 +246,7 @@ To solve these ODEs we rewrite each equation by substituting our Forward Euler M
 
 Now let's bring the mathematics to life by solving them computationally. We first need to define initial condition otherwise our equations are underdetermined with six unknowns(:math:`u^{n+1}` and :math:`u^n`) and three equations. The intial condition gives us a starting point reducing the unknowns to three (:math:`u^{n+1}`) so we can propagate the solution through time.
 
-Given the code below add your equations for :math:`A^{n+1}`, :math:`B^{n+1}` and :math`C^{n+1}` into the for loop which interates from 0 to nt-1 (final time point) and solve!
+Given the code below add your equations for :math:`A^{n+1}`, :math:`B^{n+1}` and :math:`C^{n+1}` into the for loop which interates from 0 to nt-1 (final time point) and solve!
 
 .. code-block:: python
    
@@ -303,11 +303,11 @@ As we transition to the next phase, please take a look back at the section above
 
 .. math:: \frac{\partial C}{\partial t} = D\frac{\partial C^2}{\partial x^2} + R_c
 
-Up until now we've dealt with how to approximate the first order time derivative (:math:`\frac{\partial C}{\partial t}`) and how to incorporate any reaction terms (:math:`R_c`). In this section we will figure out how to approximate the second order spatial derivative :math:`\frac{\partial C^2}{\partial x^2}` that describes diffusive mass transport.
+Up until now we've dealt with how to approximate the first order time derivative :math:`(\frac{\partial C}{\partial t})` and how to incorporate any reaction terms :math:`(R_c)`. In this section we will figure out how to approximate the second order spatial derivative :math:`(\frac{\partial C^2}{\partial x^2})` that describes diffusive mass transport.
 
 For a homogeneous material we can use the Taylor Expansion, or for a nonhomogeneous material we could take the spatial derivative of the 1st order central equation to conserve the change in the diffusivity of the material with respect to space.
 
-As we did for the first order differential above, we will create an expression for the second order derivative by relating T1 and T2, however, this time we want to keep the second order differential and lose the first order differential. Start by writing T1 and T2 in terms of spatial discretization, :math:`\Delta x` with spatial indices `i`. 
+As we did for the first order differential above, we will create an expression for the second order derivative by relating T1 and T2, however, this time we want to keep the second order differential and lose the first order differential. Start by writing T1 and T2 in terms of spatial discretization, :math:`\Delta x` with spatial indices :math:`i`. 
 
 **T1**: 
 
@@ -327,7 +327,7 @@ Next, as we did before remove all terms with differentials higher than **second*
 
 .. math:: \large u_{i-1} = u_i - \Delta x \frac{\partial u}{\partial x} +  \frac{(\Delta x)^2}{2} \frac{\partial ^2 u}{\partial x^2} +  O(\Delta x^2)
 
-Show for yourself, that if we add T1 and T2, and rearrange the terms so that the spatial derivative is on the left side we obtain:
+Show for yourself, that if we add **T1** and **T2**, and rearrange the terms so that the spatial derivative is on the left side we obtain:
 
 .. math:: \large\frac{\partial u^2}{\partial x^2} = \frac{u_{i+1}- 2u_i + u_{i-1}}{\Delta x^2} \quad \text{2nd Order Central Method}
   
@@ -390,7 +390,7 @@ or
 
 **Practice:** Show for yourself, how these equations arise from the general one given above. 
 
-In the cell below we code the algorithms outlined above for a system where a fixed concentration (1:math:`\mu`M) of our substance :math:`u` is added in the center of a thin channel of length 10. The code solves the diffusion equation to determine the concentraiton of :math:`u` at each location along the length of the channel over time.
+In the cell below we code the algorithms outlined above for a system where a fixed concentration :math:`(1 \mu M)` of our substance :math:`u` is added in the center of a thin channel of length 10. The code solves the diffusion equation to determine the concentraiton of :math:`u` at each location along the length of the channel over time.
 
 **Important**: confirm for yourself where each of equations within the for loops come from in the notes above.
 
