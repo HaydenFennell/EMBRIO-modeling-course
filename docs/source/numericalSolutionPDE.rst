@@ -1,7 +1,10 @@
+.. role:: raw-html(raw)
+   :format: html
+
 PDE's In Biological Systems
 ===========================
 
-* Click `here <https://drive.google.com/file/d/1nS54t9ZGx-v2EFugSC7V-1gEIEEjdpPI/view?usp=sharing>`_ to view this page as an excutable Jupyter notbook:
+* To view this notebook as a fully interactive Jupyter notebook, `click here <https://drive.google.com/file/d/1nS54t9ZGx-v2EFugSC7V-1gEIEEjdpPI/view?usp=sharing>`_
 
 Often mathematical models require the evaluation of complex partial differential equation (PDE) which will not necessarily have an analytical solution. A prime example of this is fluid flow, which can only be solved analyticaly in a few extremely restricted cases. We approximate the continuous, analytical solution with a discrete, numerical solution, in which we solve the PDEs over a series of discrete points related by the governing PDEs.
 
@@ -13,21 +16,21 @@ Then we define the mathematical model that will be solved over this discretized 
 
 The solution for the horizontal fluid velocity is shown in Fig 1B and the drug in Fig 1C.
 
-.. figure:: images/numericalSolutionPDE/fig1a.jpg
+.. figure:: images/numericalSolutionPDE_files/fig1a.jpg
    :figwidth: 100%
    :align: center
    :alt: node grid
    
    Figure 1A: Array of nodes discritizing the rectangular geometry with length 20 and width 2.
    
-.. figure:: images/numericalSolutionPDE/fig1b.gif
+.. figure:: images/numericalSolutionPDE_files/fig1b.gif
    :figwidth: 100%
    :align: center
    :alt: node grid
    
    Figure 1B: Horizontal fluid velocity.
    
-.. figure:: images/numericalSolutionPDE/fig1c.gif
+.. figure:: images/numericalSolutionPDE_files/fig1c.gif
    :figwidth: 100%
    :align: center
    :alt: node grid
@@ -68,7 +71,7 @@ If we know that the diffusivity of the material is constant then we can reduce t
 
 .. math:: \frac{\partial C}{\partial t} = D\frac{\partial C^2}{\partial x^2} + R_c
 
-.. figure:: images/numericalSolutionPDE/fig2.jpg
+.. figure:: images/numericalSolutionPDE_files/fig2.jpg
    :align: center
    
    Figure 2: Flux as a function of concentration and distance.
@@ -86,7 +89,7 @@ We will first obtain a difference expression for the first order time differenti
     
 Let's consider an unknown function :math:`u(x,t)` discritized over time, :math:`t`, Fig 3.
 
-.. figure:: images/numericalSolutionPDE/fig3.png
+.. figure:: images/numericalSolutionPDE_files/fig3.png
    :figwidth: 80%
    :align: center
       
@@ -108,7 +111,7 @@ If we examine the function :math:`u(t) = sin(t)` with the differential terms cen
 
 As we increase the number of terms the approximation becomes closer to the actual function as shown in the plot below.
 
-.. jupyter-execute::
+.. code-block:: python
    
    # example for increasing number of Taylor series terms to show how it affects accuracy
    import numpy as np
@@ -133,6 +136,8 @@ As we increase the number of terms the approximation becomes closer to the actua
    plt.plot(0,0,'ok')
    plt.ylim(-1.5,1.5)
    
+.. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_17_1.png
+
 This form of approximation requires a lot of information about the function, typically more than we know. Therefore we will need to truncate all but one of the differential terms and then iterate the function across a domain.
 
 Let's return to our first order differential, :math:`\frac{\partial u}{\partial t}` that we are trying to approximate numerically. Using the definition of the Taylor series expansion given above, and remember that we decided to index time with :math:`n`, the function u(t) can be approximated by:
@@ -149,7 +154,7 @@ Show for yourself that these series expansions give:
 
 **T2**: 
 
-.. math::\large u_{n-1} = u_n - \Delta t \frac{\partial u}{\partial t} +  \frac{(\Delta t)^2}{2} \frac{\partial ^2 u}{\partial t^2}-  \frac{(\Delta t)^3}{6} \frac{\partial ^3 u}{\partial t^3} + (...)
+.. math:: \large u_{n-1} = u_n - \Delta t \frac{\partial u}{\partial t} +  \frac{(\Delta t)^2}{2} \frac{\partial ^2 u}{\partial t^2}-  \frac{(\Delta t)^3}{6} \frac{\partial ^3 u}{\partial t^3} + (...)
 
 Finite difference method for first order derivatives (reaction)
 ---------------------------------------------------------------
@@ -183,7 +188,7 @@ Show for yourself, that if you leave the truncation error terms in while rearran
 
 The Forward and Backward Euler Methods can be visualized as:
 
-.. figure:: images/numericalSolutionPDE/eulerViz.png
+.. figure:: images/numericalSolutionPDE_files/eulerViz.png
    :figwidth: 100%
    :align: center
    :alt: visualization of euler method
@@ -207,7 +212,7 @@ Solving ODEs: Protein Binding Reaction
 
 Now that we have developed a few numerical schemes for numerical solution let's put them to use, and solve a system of ODEs. In this system protein A binds to receptor B forming protein-receptor complex C. The reaction is reversible and the forward and reverse rate constants are :math:`k_{on}` and :math:`k_{off}` respectively.
 
-.. image:: images/numericalSolutionPDE/reactionKonKoff.jfif
+.. image:: images/numericalSolutionPDE_files/reactionKonKoff.jfif
    :width: 400
    :align: center
    
@@ -285,7 +290,7 @@ Now that you have your solution, let's plot it!
 
 You should get a figure that looks like this:
 
-.. image:: images/numericalSolutionPDE/forwardEulerResults.png
+.. image:: images/numericalSolutionPDE_files/forwardEulerResults.png
    :width: 600
    :align: center
    
@@ -343,13 +348,13 @@ Finite difference method for second order derivatives (diffusion) - In Practice
 
 The algorithm we developed to solve a system of ODEs can be modified to consider two dimensions. The algorithm from the first order derivatives will be used to consider iterations through time, see the stencils below.
 
-.. image:: images/numericalSolutionPDE/forwardBackwardEuler1.jfif
+.. image:: images/numericalSolutionPDE_files/forwardBackwardEuler1.jfif
    :width: 600
    :align: center
    
 To evaluate the spatial differential we will combine the above stencils with our 2nd Order Central Method for space to get the stencils below. Note that another name for the Forward Euler is the Explicit Euler (EE) and the Backward Euler is known as the Implicit Euler (IE) method.
 
-.. image:: images/numericalSolutionPDE/forwardBackwardEuler2.jfif
+.. image:: images/numericalSolutionPDE_files/forwardBackwardEuler2.jfif
    :width: 600
    :align: center
    
@@ -389,7 +394,7 @@ In the cell below we code the algorithms outlined above for a system where a fix
 
 **Important**: confirm for yourself where each of equations within the for loops come from in the notes above.
 
-.. jupyter-execute::
+.. code-block:: python
 
    import numpy as np
    import matplotlib.pyplot as plt
@@ -439,6 +444,10 @@ In the cell below we code the algorithms outlined above for a system where a fix
    plt.ylabel('Distance (m)')
    plt.show()
    
+.. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_51_0.png
+
+.. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_51_1.png
+
 When developing computational simulations one is always looking for ways to speed up the model without sacrificing accuracy, one way to is vectorize the above model to get rid of the spatial for loop construct. Python syntax may make this tricky, so lets do some simple exercises using vectorized indexing. Let's look at the array A = [1,2,3,4,5], note that in Python the indexing starts at 0 so A[0] = 1 and A[4] = 5.
 
 If we want to select the second to last value INCLUDING THE LAST VALUE we will write: A[1:]
@@ -447,14 +456,18 @@ However, if we don't want to include the last term try: A[1:-1] this is all of o
 
 If we want the first value up to the last point we will write A[:-1]
 
-.. jupyter-execute::
+.. code:: 
 
-   A = [1,2,3,4,5];
-   A[1:],A[1:-1],A[:-1]
+    A = [1,2,3,4,5];
+    A[1:],A[1:-1],A[:-1]
+
+.. parsed-literal::
+
+    ([2, 3, 4, 5], [2, 3, 4], [1, 2, 3, 4])
    
 Using vector notation replace the for loop that iterates through space. Instead we define BCs, then calculate the interior nodes with Cu[1:-1,n+1] = ...). Note: for interior nodes think about the first index, what are the values of the neighboring point, what about the last?) How does this effect the outcome?
 
-.. jupyter-execute::
+.. code-block:: python
 
    import numpy as np
    import matplotlib.pyplot as plt
@@ -512,6 +525,10 @@ Using vector notation replace the for loop that iterates through space. Instead 
    plt.ylabel('Distance (m)')
    plt.show()
    
+.. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_55_0.png
+
+.. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_55_1.png
+   
 Finite difference method for PDEs - Combining reaction and diffusion
 --------------------------------------------------------------------
 
@@ -549,7 +566,7 @@ In the cell below we code the solution algorithm solving the diffusion and react
 
 **Important:** Make sure you understand what each term in the for loop statements represent (diffusion, binding, degradation etc.).
 
-.. jupyter-execute::
+.. code-block:: python
 
    import numpy as np
    import matplotlib.pyplot as plt
@@ -628,6 +645,10 @@ In the cell below we code the solution algorithm solving the diffusion and react
    plt.title('Complex (C)')
    plt.legend(loc='best')
    
+.. image:: images/numericalSolutionPDE_files/unboundReceptor1.png
+
+.. image:: images/numericalSolutionPDE_files/unboundReceptor2.png
+   
 Further tools to accelerate computation of finite difference methods
 --------------------------------------------------------------------
 
@@ -642,7 +663,7 @@ For the EE-1, CM-2:
 The spatial operator B is a tridiagonal matrix of size nx by nx, the diagonals are defined as :math:`b_{i-1}`, :math:`b_i`, and  :math:`b_{i+1}`.
 While the operator A is a monodiagonal matrix of size nx by nx, the diagonals are defined as :math:`a_i`, see figure below
 
-.. image:: images/numericalSolutionPDE/matrixImage1.jfif
+.. image:: images/numericalSolutionPDE_files/matrixImage1.jfif
    :width: 800
    :align: center
 
@@ -650,11 +671,11 @@ Matrix A and B can are derived from the numerical stencil that we previously sol
 
 Start by rewriting the numerical diffusion in the left panel in terms of the unknowns on the left side and the known on the right. Next isolate each of the index function to its own term, see the last line in the right panel. Each term represents a diagnonal.
 
-.. image:: images/numericalSolutionPDE/matrixImage2.jfif
+.. image:: images/numericalSolutionPDE_files/matrixImage2.jfif
    :width: 800
    :align: center
    
-.. jupyter-execute::
+.. code-block:: python
 
 	import numpy as np
     import matplotlib.pyplot as plt
@@ -735,102 +756,114 @@ Start by rewriting the numerical diffusion in the left panel in terms of the unk
 	plt.spy(B[0:10,0:10])
 	plt.title('spy of Matrix B')
 	
-Linear algebra also allows us to solve diffusion implicitly, by solving for the spatial differential in the future and solve simultaneously for all future points. This makes the solution unconditionaly stable!
+.. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_62_0.png
 
-Unknown Known
+.. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_62_1.png
+
+.. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_62_3.png
+
+Linear algebra also allows us to solve diffusion implicitly, by solving for the spatial differential in the future and solve simultaneously for all future points. This makes the solution unconditionaly stable!
 
 .. math::
 
    \color{green}{\frac{-D \Delta t}{\Delta x^2}} \color{red}{u^{n+1}_{i+1}} \color{black}{+} \color{green}{(1 + 2 \frac{D \Delta t}{\Delta x^2})} \color{red}{u^{n+1}_{i}} \color{black}{+} \color{green}{\frac{-D \Delta t}{\Delta x^2}} \color{red}{u^{n+1}_{i-1}} \color{black}{=} \color{green}{u^n_i}
+
+.. centered:: *Note:* :raw-html:`<i><font color="green">Known</font> <font color="red">Unknown</font></i>`   
+
+.. code-block:: python
    
-.. jupyter-execute::
+   import numpy as np
+   import matplotlib.pyplot as plt
+   import math as ma
+   
+   # =============================================================================
+   # Uniform Mesh
+   # =============================================================================
+   nx = 100
+   nt = 10000
+   Lx = 10
+   Lt = 10
+   dx = Lx/nx
+   dt = Lt/nt
+   D_sub = 1e-1
+   r_a0 = 1
+   r_b0 = 1
+   x = np.linspace(0,Lx,nx)
+   t = np.linspace(0,Lt,nt)
 
-	import numpy as np
-    import matplotlib.pyplot as plt
-    import math as ma
+   Ca = np.zeros((nx,nt))
+   Cb = np.zeros((nx,nt))
+   D = np.zeros(nx)
+
+   sig_R = np.zeros(nx)
+   sig_L = np.zeros(nx)
+   sig_C = np.zeros(nx)
+
+   A = np.zeros((nx,nx))
+   B = np.zeros((nx,nx))
+
+   Ca_past = np.zeros((nx,nt))
+   Cb_past = np.zeros((nx,nt))
+
+   D[:] = D_sub
+   Ca[int(0.4*nx):int(0.6*nx),0] = r_a0
+
+   Ca[0] = 0
+   Ca[nx-1] = 0
+   Cb[0] = 0
+   Cb[nx-1] = 0
+      
+   # interior nodes
+   sig_R[1:] = -(dt/dx**2)*D_sub
+   sig_C[1:-1] = 1 + 2*(dt/dx**2)*D_sub
+   sig_L[:-1] = -(dt/dx**2)*D_sub
+   # boundary conditions
+   sig_C[0] = 1 +(dt/dx**2)*D_sub
+   sig_C[-1] = 1 +(dt/dx**2)*D_sub
+
+   B = np.diag(np.ones(nx),0)
+   A = np.diag(sig_L[:-1],-1) + np.diag(sig_C[:],0) + np.diag(sig_L[1:],1)
+
+   for n in range(0,nt-1):
+      Ca_past = B.dot(Ca[:,n])
+      Ca[:,n+1] = np.linalg.solve(A,Ca_past)
+
+   # let's plot all of space for days 0,1,2,3,4, and 5
+   fig = plt.figure(1, figsize = (6,4))
+   plt.plot(x,Ca[:,0],'red',label='0 days')
+   plt.plot(x,Ca[:,int(1/Lt*nt)],'darkorange',label='1 day')
+   plt.plot(x,Ca[:,int(2/Lt*nt)],'yellow',label='2 days')
+   plt.plot(x,Ca[:,int(3/Lt*nt)],'green',label='3 days')
+   plt.plot(x,Ca[:,int(4/Lt*nt)],'blue',label='4 days')
+   plt.plot(x,Ca[:,int(5/Lt*nt)],'violet',label='5 days')
+   plt.legend(loc='best')
+   plt.show
+
+   # contourf plots are great too
+   # for more information visit:
+   # https://jakevdp.github.io/PythonDataScienceHandbook/04.04-density-and-contour-plots.html
+   fig = plt.figure(2, figsize = (6,4))
+   plt.contourf(t,x,Ca,cmap='jet')
+   plt.xlabel('Time (days)')
+   plt.ylabel('Distance (m)')
+   plt.show()
+
+   # We can look at our opperator space by splotting the spy, every block that is black contains
+   # a value while white is empty
+   fig = plt.figure(3, figsize = (10,4))
+   plt.subplot(121)
+   plt.spy(A[0:10,0:10])
+   plt.title('spy of Matrix A')
+   plt.subplot(122)
+   plt.spy(B[0:10,0:10])
+   plt.title('spy of Matrix B')
 	
-	# =============================================================================
-	# Uniform Mesh
-	# =============================================================================
-	nx = 100
-	nt = 10000
-	Lx = 10
-	Lt = 10
-	dx = Lx/nx
-	dt = Lt/nt
-	D_sub = 1e-1
-	r_a0 = 1
-	r_b0 = 1
-	x = np.linspace(0,Lx,nx)
-	t = np.linspace(0,Lt,nt)
+.. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_65_0.png
 
-	Ca = np.zeros((nx,nt))
-	Cb = np.zeros((nx,nt))
-	D = np.zeros(nx)
+.. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_65_1.png
 
-	sig_R = np.zeros(nx)
-	sig_L = np.zeros(nx)
-	sig_C = np.zeros(nx)
+.. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_65_3.png
 
-	A = np.zeros((nx,nx))
-	B = np.zeros((nx,nx))
-
-	Ca_past = np.zeros((nx,nt))
-	Cb_past = np.zeros((nx,nt))
-
-	D[:] = D_sub
-	Ca[int(0.4*nx):int(0.6*nx),0] = r_a0
-
-	Ca[0] = 0
-	Ca[nx-1] = 0
-	Cb[0] = 0
-	Cb[nx-1] = 0
-		
-	# interior nodes
-	sig_R[1:] = -(dt/dx**2)*D_sub
-	sig_C[1:-1] = 1 + 2*(dt/dx**2)*D_sub
-	sig_L[:-1] = -(dt/dx**2)*D_sub
-	# boundary conditions
-	sig_C[0] = 1 +(dt/dx**2)*D_sub
-	sig_C[-1] = 1 +(dt/dx**2)*D_sub
-
-	B = np.diag(np.ones(nx),0)
-	A = np.diag(sig_L[:-1],-1) + np.diag(sig_C[:],0) + np.diag(sig_L[1:],1)
-
-	for n in range(0,nt-1):
-		Ca_past = B.dot(Ca[:,n])
-		Ca[:,n+1] = np.linalg.solve(A,Ca_past)
-
-	# let's plot all of space for days 0,1,2,3,4, and 5
-	fig = plt.figure(1, figsize = (6,4))
-	plt.plot(x,Ca[:,0],'red',label='0 days')
-	plt.plot(x,Ca[:,int(1/Lt*nt)],'darkorange',label='1 day')
-	plt.plot(x,Ca[:,int(2/Lt*nt)],'yellow',label='2 days')
-	plt.plot(x,Ca[:,int(3/Lt*nt)],'green',label='3 days')
-	plt.plot(x,Ca[:,int(4/Lt*nt)],'blue',label='4 days')
-	plt.plot(x,Ca[:,int(5/Lt*nt)],'violet',label='5 days')
-	plt.legend(loc='best')
-	plt.show
-
-	# contourf plots are great too
-	# for more information visit:
-	# https://jakevdp.github.io/PythonDataScienceHandbook/04.04-density-and-contour-plots.html
-	fig = plt.figure(2, figsize = (6,4))
-	plt.contourf(t,x,Ca,cmap='jet')
-	plt.xlabel('Time (days)')
-	plt.ylabel('Distance (m)')
-	plt.show()
-
-	# We can look at our opperator space by splotting the spy, every block that is black contains
-	# a value while white is empty
-	fig = plt.figure(3, figsize = (10,4))
-	plt.subplot(121)
-	plt.spy(A[0:10,0:10])
-	plt.title('spy of Matrix A')
-	plt.subplot(122)
-	plt.spy(B[0:10,0:10])
-	plt.title('spy of Matrix B')
-	
 Appendix: Von Neumann Stability Analysis
 ----------------------------------------
 
@@ -1014,11 +1047,11 @@ Run the code below for varying nt, and subsequently varying dt.
     
     plt.show
     
-.. image:: images/numericalSolutionPDE/PDE_Appendix_6_1.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_6_1.png
    :width: 500
    :align: center
 
-.. image:: images/numericalSolutionPDE/PDE_Appendix_6_2.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_6_2.png
    :width: 500
    :align: center
 
@@ -1056,7 +1089,7 @@ Consider nt = 5:
     plt.legend(loc='best')
     plt.show
     
-.. image:: images/numericalSolutionPDE/PDE_Appendix_8_1.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_8_1.png
    :width: 500
    :align: center
 
@@ -1233,27 +1266,27 @@ your model.
     plt.spy(B)
     plt.title('spy of Matrix B')
     
-.. image:: images/numericalSolutionPDE/PDE_Appendix_11_4.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_11_4.png
    :width: 500
    :align: center
 
 
-.. image:: images/numericalSolutionPDE/PDE_Appendix_11_5.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_11_5.png
    :width: 500
    :align: center
 
 
-.. image:: images/numericalSolutionPDE/PDE_Appendix_11_6.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_11_6.png
    :width: 500
    :align: center
 
 
-.. image:: images/numericalSolutionPDE/PDE_Appendix_11_7.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_11_7.png
    :width: 500
    :align: center
 
 
-.. image:: images/numericalSolutionPDE/PDE_Appendix_11_8.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_11_8.png
    :width: 500
    :align: center
 
@@ -1389,7 +1422,7 @@ your model.
     plt.subplot(122)
     plt.plot(Ufinal[:,0:500:50]);
 
-.. image:: images/numericalSolutionPDE/PDE_Appendix_13_0.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_13_0.png
    :width: 800
    :align: center
 
@@ -1651,7 +1684,7 @@ your model.
     plt.subplot(212)
     plt.quiver(U[:,:,int(0.99*nt)],V[:,:,int(0.99*nt)])
 
-.. image:: images/numericalSolutionPDE/PDE_Appendix_15_1.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_15_1.png
    :width: 800
    :align: center
 
@@ -1664,7 +1697,7 @@ your model.
     plt.subplot(122)
     plt.plot(U[:,-3,-2]);
 
-.. image:: images/numericalSolutionPDE/PDE_Appendix_16_0.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_16_0.png
    :width: 800
    :align: center
 
@@ -1672,6 +1705,6 @@ your model.
 
     plt.plot(U[10,1:-2,0:500:10]);
 
-.. image:: images/numericalSolutionPDE/PDE_Appendix_17_0.png
+.. image:: images/numericalSolutionPDE_files/PDE_Appendix_17_0.png
    :width: 500
    :align: center
