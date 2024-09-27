@@ -677,84 +677,84 @@ Start by rewriting the numerical diffusion in the left panel in terms of the unk
    
 .. code-block:: python
 
-	import numpy as np
-    import matplotlib.pyplot as plt
-    import math as ma
+   import numpy as np
+   import matplotlib.pyplot as plt
+   import math as ma
 
-	nx = 100 # number of nodes in space
-	nt = 10000 # number of nodes in time
-	Lx = 10 # spatial length of model
-	Lt = 10 # duration of model
-	dx = Lx/nx # step size in space
-	dt = Lt/nt # step size in time
-	x = np.linspace(0,Lx,nx) # vector for the space the model is solved over
-	t = np.linspace(0,Lt,nt) # vector for the time the model is solver over
+   nx = 100 # number of nodes in space
+   nt = 10000 # number of nodes in time
+   Lx = 10 # spatial length of model
+   Lt = 10 # duration of model
+   dx = Lx/nx # step size in space
+   dt = Lt/nt # step size in time
+   x = np.linspace(0,Lx,nx) # vector for the space the model is solved over
+   t = np.linspace(0,Lt,nt) # vector for the time the model is solver over
 
-	D_sub = 1e-1 # diffusivity of the substrate (constant)
+   D_sub = 1e-1 # diffusivity of the substrate (constant)
 
-	Cu = np.zeros((nx,nt)) # initialize concentration of u
-	Cu[int(0.4*nx):int(0.6*nx),0] = 1 # inital conditions for u
+   Cu = np.zeros((nx,nt)) # initialize concentration of u
+   Cu[int(0.4*nx):int(0.6*nx),0] = 1 # inital conditions for u
 
-	sig_R = np.zeros(nx) # right diagonal for [B]
-	sig_L = np.zeros(nx) # left diagonal for [B]
-	sig_C = np.zeros(nx) # central diagonal for [B]
+   sig_R = np.zeros(nx) # right diagonal for [B]
+   sig_L = np.zeros(nx) # left diagonal for [B]
+   sig_C = np.zeros(nx) # central diagonal for [B]
 
-	A = np.zeros((nx,nx)) # initialize A
-	B = np.zeros((nx,nx)) # initialize B
+   A = np.zeros((nx,nx)) # initialize A
+   B = np.zeros((nx,nx)) # initialize B
 
-	Cu_past = np.zeros((nx,nt)) #inital array for known terms, right side of the equation or B*C^n
+   Cu_past = np.zeros((nx,nt)) #inital array for known terms, right side of the equation or B*C^n
 
-	# interior nodes
-	sig_R[1:] = (dt/dx**2)*D_sub
-	sig_C[1:-1] = 1 - 2*(dt/dx**2)*D_sub
-	sig_L[:-1] = (dt/dx**2)*D_sub
-	# boundary conditions
-	sig_C[0] = 1 -(dt/dx**2)*D_sub
-	sig_C[-1] = 1 -(dt/dx**2)*D_sub
+   # interior nodes
+   sig_R[1:] = (dt/dx**2)*D_sub
+   sig_C[1:-1] = 1 - 2*(dt/dx**2)*D_sub
+   sig_L[:-1] = (dt/dx**2)*D_sub
+   # boundary conditions
+   sig_C[0] = 1 -(dt/dx**2)*D_sub
+   sig_C[-1] = 1 -(dt/dx**2)*D_sub
 
-	# to build A and B we can use Pythons diag function
-	# np.diag(a,b) vector a is diagonalized into an matix of the len(a)X len(a)
-	# each diagonal is offset by b, so for the central diagonal b=0, for right b=1, for left b = -1
-	A = np.diag(np.ones(nx),0)
-	B = np.diag(sig_L[:-1],-1) + np.diag(sig_C[:],0) + np.diag(sig_R[1:],1)
-		
-	# now we iterate through time with index n
-	for n in range(0,nt-1):
-	#   we take the dot product of B*Cu^n using Python dot function
-		Cu_past = B.dot(Cu[:,n])
-	#   we solve the equation [A]u^n+1 = Cu_past by inverting A on both sides
-	#   this is done with the Python linalg.solve
-		Cu[:,n+1] = np.linalg.solve(A,Cu_past)
-		
-	# let's plot all of space for days 0,1,2,3,4, and 5
-	fig = plt.figure(1, figsize = (6,4))
-	plt.plot(x,Cu[:,0],'red',label='0 days')
-	plt.plot(x,Cu[:,int(1/Lt*nt)],'darkorange',label='1 day')
-	plt.plot(x,Cu[:,int(2/Lt*nt)],'yellow',label='2 days')
-	plt.plot(x,Cu[:,int(3/Lt*nt)],'green',label='3 days')
-	plt.plot(x,Cu[:,int(4/Lt*nt)],'blue',label='4 days')
-	plt.plot(x,Cu[:,int(5/Lt*nt)],'violet',label='5 days')
-	plt.legend(loc='best')
-	plt.show
+   # to build A and B we can use Pythons diag function
+   # np.diag(a,b) vector a is diagonalized into an matix of the len(a)X len(a)
+   # each diagonal is offset by b, so for the central diagonal b=0, for right b=1, for left b = -1
+   A = np.diag(np.ones(nx),0)
+   B = np.diag(sig_L[:-1],-1) + np.diag(sig_C[:],0) + np.diag(sig_R[1:],1)
+      
+   # now we iterate through time with index n
+   for n in range(0,nt-1):
+   #   we take the dot product of B*Cu^n using Python dot function
+      Cu_past = B.dot(Cu[:,n])
+   #   we solve the equation [A]u^n+1 = Cu_past by inverting A on both sides
+   #   this is done with the Python linalg.solve
+      Cu[:,n+1] = np.linalg.solve(A,Cu_past)
+      
+   # let's plot all of space for days 0,1,2,3,4, and 5
+   fig = plt.figure(1, figsize = (6,4))
+   plt.plot(x,Cu[:,0],'red',label='0 days')
+   plt.plot(x,Cu[:,int(1/Lt*nt)],'darkorange',label='1 day')
+   plt.plot(x,Cu[:,int(2/Lt*nt)],'yellow',label='2 days')
+   plt.plot(x,Cu[:,int(3/Lt*nt)],'green',label='3 days')
+   plt.plot(x,Cu[:,int(4/Lt*nt)],'blue',label='4 days')
+   plt.plot(x,Cu[:,int(5/Lt*nt)],'violet',label='5 days')
+   plt.legend(loc='best')
+   plt.show
 
-	# contourf plots are great too
-	# for more information visit:
-	# https://jakevdp.github.io/PythonDataScienceHandbook/04.04-density-and-contour-plots.html
-	fig = plt.figure(2, figsize = (6,4))
-	plt.contourf(t,x,Cu,cmap='jet')
-	plt.xlabel('Time (days)')
-	plt.ylabel('Distance (m)')
-	plt.show()
+   # contour plots are great too
+   # for more information visit:
+   # https://jakevdp.github.io/PythonDataScienceHandbook/04.04-density-and-contour-plots.html
+   fig = plt.figure(2, figsize = (6,4))
+   plt.contourf(t,x,Cu,cmap='jet')
+   plt.xlabel('Time (days)')
+   plt.ylabel('Distance (m)')
+   plt.show()
 
-	# We can look at our opperator space by splotting the spy, every block that is black contains
-	# a value while white is empty
-	fig = plt.figure(3, figsize = (10,4))
-	plt.subplot(121)
-	plt.spy(A[0:10,0:10])
-	plt.title('spy of Matrix A')
-	plt.subplot(122)
-	plt.spy(B[0:10,0:10])
-	plt.title('spy of Matrix B')
+   # We can look at our opperator space by splotting the spy, every block that is black contains
+   # a value while white is empty
+   fig = plt.figure(3, figsize = (10,4))
+   plt.subplot(121)
+   plt.spy(A[0:10,0:10])
+   plt.title('spy of Matrix A')
+   plt.subplot(122)
+   plt.spy(B[0:10,0:10])
+   plt.title('spy of Matrix B')
 	
 .. image:: images/numericalSolutionPDE_files/numericalSolutionOfPDE_62_0.png
 
