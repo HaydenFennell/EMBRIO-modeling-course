@@ -4,16 +4,22 @@ Signaling pathway dynamics
 * View this page as a fully interactive Jupyter Notebook: `Click here <https://drive.google.com/file/d/1MUtvLNWbtywA02rf-dS_iIqpfbxhQBe9/view?usp=sharing>`_
 
 In this activity, we will learn how to: 
-* Write simple equations to represent signaling pathways that are common in biology - Use computer algorithms to solve these equations, to predict the dynamics of pathway components - Plot our predictions compared to data - Interpret our predictions - Use these results to develop hypotheses about the pathway - Use the simulations to test these hypotheses and further explore the system
+
+* Write simple equations to represent signaling pathways that are common in biology 
+* Use computer algorithms to solve these equations, to predict the dynamics of pathway components 
+* Plot our predictions compared to data 
+* Interpret our predictions 
+* Use these results to develop hypotheses about the pathway
+* Use the simulations to test these hypotheses and further explore the system
 
 Section 0: Three-component networks and loops
 ---------------------------------------------
 
-In the image below (from Dr. Umulis’ lecture this morning), X, Y and Z represent three components of a feed-forward loop. In these loops, X regulates Y, Y regulates Z and X also regulates Z. The difference between networks are determined by the nature of the regulation interactions: upregulation (+) or downregulation (-).
+In the image below, X, Y, and Z represent three components of a feed-forward loop. In these loops, X regulates Y, Y regulates Z and X also regulates Z. The difference between networks are determined by the nature of the regulation interactions: upregulation (+) or downregulation (-).
 
 When different regulatory interactions are combined we can get very interesting dynamics that serve different biological functions.
 
-**Small-group discussions:** in each of these networks, if you add exogenous X, what will happen to the levels of Z? Write down your predictions, we will use it later…
+**REFLECT:** In each of these networks, if you add exogenous X, what will happen to the levels of Z? Write down your predictions, we will use it later…
 
 Section 1: Coherent Feed Forward Loop
 -------------------------------------
@@ -42,7 +48,7 @@ The term :math:`\frac{X^n}{K_Y^n+X^n}` generates a hill function that increases 
 
 :math:`\mu_Y` is the degration rate constant describing how quickly Y decays.
 
-**Small group discussions**: do some thought experiments to predict what would happen to the first term if you change :math:`X`, or :math:`K_Y` or :math:`k_1`
+**REFLECT:** do some thought experiments to predict what would happen to the first term if you change :math:`X`, or :math:`K_Y` or :math:`k_1`
 
 **Component Z**
 
@@ -58,7 +64,7 @@ The term :math:`\frac{X^n+Y^n}{K_Z^n+X^n+Y^n}` generates a hill function that in
 
 :math:`\mu_Z` is the degration rate constant describing how quickly Z decays.
 
-Small group discussion: talk through some different potential values of X and Y and describe how the values of the hill term would change.
+**REFLECTION:** Think through some different potential values of X and Y and describe how the values of the hill term would change.
 
 Solving equations to predict pathway dynamics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -252,7 +258,7 @@ The term :math:`\frac{X+Y}{K_Z+X+Y}` generates a hill function that increases as
 
 :math:`\mu_Z` is the degration rate constant describing how quickly Z decays.
 
-**Small group discussions**: do some thought experiments to predict what would happen to the first term if you change :math:`X`, or :math:`K_Y` or :math:`k_1`, or :math:`Y`.
+**REFLECT:** do some thought experiments to predict what would happen to the first term if you change :math:`X`, or :math:`K_Y` or :math:`k_1`, or :math:`Y`.
 
 Solving equations to predict pathway dynamics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -414,15 +420,15 @@ Imagine that you are in the lab, and you have been working on a signaling pathwa
 
 Your experimental measurements in triplicate are included in two excel files in the google drive folder.
 
-Y measurements are `here <https://docs.google.com/spreadsheets/d/11mgZTsGu_fJggTjcm6QwxuYJe_5GrAWc/edit?usp=sharing&ouid=106276251205417219314&rtpof=true&sd=true>`__.
+Y measurements are `here <https://docs.google.com/spreadsheets/d/1jy4dIYFIFuRdr21jW4SYrPQAvrcHoRZj-wb_evFnhkU/edit?usp=sharing>`__.
 
-Z measurements are `here <https://docs.google.com/spreadsheets/d/14ICyMGBAOyr0FA0UF4AYvojDtMvII_v1/edit?usp=sharing&ouid=106276251205417219314&rtpof=true&sd=true>`__.
+Z measurements are `here <https://docs.google.com/spreadsheets/d/1L_rGwYsRYvlT6pq8fbPKBIPghOTyoYpDVOdglAhESok/edit?usp=sharing>`__.
 
-Once you’ve downloaded your files, you can upload them into this workspace as we practiced earlier, by using the folder button on the left of your screen.
+Once you’ve downloaded your files, you can upload them into your notebook as we described in the How to Use Google Colab tutorial, (by using the folder button on the left of the notebook screen).
 
 The code below will load and plot your data.
 
-**Discussion question**: Based on these results, what kind of feed forward loop do you predict this system has?
+**REFLECT:** Based on these results, what kind of feed forward loop do you predict this system has?
 
 .. code:: 
 
@@ -454,7 +460,7 @@ Comparing simulations to data
 
 Based on what type of feed forward loop you believe your system is, use the model from above (you can copy and paste the code) along with the data provided to estimate the parameters that drive the system. You can also copy and paste the data plotting code so that you can compare the data and simulations on one graph.
 
-Discussion questions:
+Reflect on the following:
 
 #. What did you look at when you tried to determine if the parameters "fit" or not?
 #. What experimental adjustments would have been helpful in comparing to the data?
@@ -463,57 +469,3 @@ Discussion questions:
 #. What simulations and experiments could you do next to test your predictions of network structure and parameters?
 
 These things that we do intuitively can be formalized into mathematical and computational tools to calibrate the models to data.
-
-.. code:: 
-
-    # Copy the model code here
-    
-    
-    
-    # Copy the data plotting code here so that you can compare them on one graph
-    
-    
-
-Section 4: Feedback and reflections (Individual assignment)
------------------------------------------------------------
-
-To help us understand how scientists engage with Google Colaboratories and with interdisciplinary collaboration, please take a few minutes to respond to the following prompts.
-
-You can put your answers right here in the colab. When you are done, please **upload both colabs to the following folder on drive**. You can make a copy and then drag and drop the copy to this shared folder on google drive.
-
-Reflections
-~~~~~~~~~~~
-
-1. How would you describe the interdisciplinary background of your team that contributed to the solution of the assignment?
-
-*Add your responses here*
-
-2. To what extent did you use other team members’ expertise to solve the assignment? Please elaborate with an example.
-
-*Add your responses here*
-
-3. To what extent did you contribute with your expertise to solve the
-   assignment? Please elaborate with specifics.
-
-*Add your responses here*
-
-4. How would you describe the level of communication among the team
-   members?
-
-*Add your responses here*
-
-5. What topics or skills did you learn from this activity that you did
-   not know before?
-
-*Add your responses here*
-
-6. Did any particular team member contribute to your understanding of
-   the new skill or topic you learned?
-
-*Add your responses here*
-
-7. Please provide any other thoughts or comments that you would like to
-   share.
-
-*Add your responses here*
-

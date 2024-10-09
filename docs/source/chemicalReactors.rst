@@ -3,18 +3,14 @@ Chemical Reactor Stability and Sensitivity
 
 Deliverables For this project:
 
--  There are **SEVEN** tasks that you need to complete. These tasks are    integrated throughout this collaboratory. Please read carefully    because some tasks have coding and reflection components.
--  There are two types of tasks: 1) equation derivation tasks, and 2) coding tasks.
--  For equation derivation tasks: if you are not able to type your equations into the collaboratory notebook you can write, scan and upload your solutions in separate documents. However, you must    indicate in the collaboratory that you have uploaded separate documents.
-- Please upload your complete and executable google collaboratory (.ipynb file) to Blackboard
--  **Include your name at the top of the notebook**
-
 Introduction
 ------------
 
 This project will introduce ideas related to the kinetics of a steady state, constantly stirred tank reactor. The approach to solving the equations is the same as we apply to other problems, namely- Mass Balance and Energy Balance and Entropy balance as needed. This one is predominately driven by Mass and Energy, however there are derivations of what is called the Arrhenius equation that rely on activation energy and some derivations this is related to the Gibb’s Free energy. Gibb’s free energy, if you’ll remember, is the useful energy for systems at Contant T and P. 
 
 You will be asked to answer questions, derive formulas, and implement code to demonstrate your understanding of the concepts. Please show all your work below each of the problems listed, and clearly comment your code so we can understand what is happening. Good luck!
+
+**Note:** There are **SEVEN** tasks that you need to complete. These tasks are integrated throughout this collaboratory. Please read carefully, because some tasks have both coding and reflection components.
 
 For this module and the discussion of stability and sensitivity we will be focused on a continuously stirred tank reactor (CSTR), with a simple reaction of reactant A forming product B.
 

@@ -1,8 +1,8 @@
 .. role:: raw-html(raw)
    :format: html
 
-PDE's In Biological Systems
-===========================
+PDEs In Biological Systems
+==========================
 
 * To view this notebook as a fully interactive Jupyter notebook, `click here <https://drive.google.com/file/d/1nS54t9ZGx-v2EFugSC7V-1gEIEEjdpPI/view?usp=sharing>`_
 
