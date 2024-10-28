@@ -24,27 +24,27 @@ This site will follow a weekly update schedule. Updates will be pushed and the b
      - Delivery Date
    * - Module 0: Introduction to Scientific Computing
      - Python basics, loops, data handling
-     - October 11, 2024
+     - October 30, 2024
    * - Module 1: Introduction to Biological Modeling
      - The Modeling Workflow, Identifying meaningful hypothesis, model abstraction
-     - October 11, 2024
+     - October 30, 2024
    * - Module 3: Building Mathematical Models
      - 
-     - October 18, 2024 
+     - November 01, 2024 
    * - Module 4: Introduction to Biological Modeling
      - 
-     - October 18, 2024
+     - November 08, 2024
    * - Module 5: Data Analysis
      - 
-     - October 25, 2024
+     - November 08, 2024
    * - Module 6: Validity, Reliability, and Optimization
      - 
-     - October 25, 2024
+     - November 15, 2024
    * - Module 7: Best Practices
      - 
-     - November 01, 2024
+     - November 15, 2024
    * - Module 8: Worked Examples
      - 
-     - November 01, 2024
+     - November 22, 2024
      
-**Last Updated: 10/09/24**
+**Last Updated: 10/28/24**
