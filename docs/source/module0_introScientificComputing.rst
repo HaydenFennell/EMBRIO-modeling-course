@@ -1,12 +1,7 @@
 Introduction to Scientific Computing
 ====================================
 
-This section will provide the necessary background in Python programming needed to complete the rest of this course.
-
-Basic Syntax, Printing, and Data Types
---------------------------------------
-
-[Coming soon]
+This section will provide the necessary background in Python programming needed to complete the rest of this course. While most models can be implemented using a number of different possible programming languages, we will be using Python as our language of choice throughout this course. Python is a widely used, open-source programming language with a wide variety of community-built packages for scientific use (numerical methods, data analysis, plotting and visualization, etc.)
 
 Mathematical Operations, Defining Variables, and Plotting
 ---------------------------------------------------------
