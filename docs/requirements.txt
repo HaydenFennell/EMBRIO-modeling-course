@@ -1,2 +1,2 @@
 # Python requirements for project build
-furo==2024.1.29
+furo==2024.8.6
