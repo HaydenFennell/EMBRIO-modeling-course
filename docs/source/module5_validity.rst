@@ -1,4 +1,4 @@
-Module 6: Validity, Reliability, and Model Improvement
+Module 5: Validity, Reliability, and Model Improvement
 ======================================================
 
 6.1: Validation vs Verification

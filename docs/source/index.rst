@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the EMBRIO Multiscale Modeling Course!
-=================================================
+EMBRIO Multiscale Modeling E-Book
+=================================
 
 .. toctree::
    :maxdepth: 2
@@ -14,12 +14,12 @@ Welcome to the EMBRIO Multiscale Modeling Course!
    introduction
    module0_introScientificComputing
    module1_introToModeling
-   module2_biologicalBackground
-   module3_buildingMathModels
-   module4_compImplementation
-   module5_dataAnalysis
-   module6_validity
-   module7_bestPractices
+   module2_buildingMathModels
+   module3_compImplementation
+   module4_dataAnalysis
+   module5_validity
+   module6_bestPractices
+   module7_biologicalBackground
    module8_workedExamples
    numericalSolutionPDE
    equationsOfState

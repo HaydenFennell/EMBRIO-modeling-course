@@ -1,4 +1,4 @@
-Module 5: Data Analysis
+Module 4: Data Analysis
 =======================
 
 5.1: Managing and Preparing Data

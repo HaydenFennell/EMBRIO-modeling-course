@@ -1,4 +1,4 @@
-Module 3: Building Mathematical Models
+Module 2: Building Mathematical Models
 ======================================
 
 3.1: ODE & PDE Modeling

@@ -1,4 +1,4 @@
-Module 4: Converting Math to Code (Implementing Simulations)
+Module 3: Converting Math to Code (Implementing Simulations)
 ============================================================
 
 4.1: Model vs. Simulation

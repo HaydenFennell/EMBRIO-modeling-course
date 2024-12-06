@@ -12,7 +12,7 @@ import pathlib
 import sys
 sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 
-project = 'EMBRIO Multiscale Modeling Course'
+project = 'EMBRIO Multiscale Modeling E-Book'
 copyright = '2024, Hayden Fennell'
 author = 'Hayden Fennell'
 release = '0.1'
@@ -32,5 +32,5 @@ exclude_patterns = []
 
 html_theme = 'furo'
 html_logo = 'images/embrioLogoGrey.png'
-html_title = 'Multi-Scale Modeling Course'
+html_title = 'Multi-Scale Modeling E-Book'
 html_static_path = ['_static']

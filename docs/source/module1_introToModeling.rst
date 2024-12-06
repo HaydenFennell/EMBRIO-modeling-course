@@ -195,7 +195,7 @@ For the first question, we should revisit the entire workflow processes and revi
 
 *Biological Model:*
 
-* Are there missing or extraneous components in the model
+* Are there missing or extraneous components in the model?
 
 For the second question we should determine if the computable model is capable of answering or initial hypothesis. Note that here we are not asking if the model does answer the question, instead we are just asking if it can answer the question. We should examine the model outputs and determine if they are comparable to some experimentally observed data. If there are no model outputs that can be directly mapped to experimental data, then we have no way to verify the basic functioning of the model.
 
@@ -204,7 +204,178 @@ For the second question we should determine if the computable model is capable o
 1.3 Worked Example: Cell Sorting
 --------------------------------
 
-[Coming soon. Content being converted now.]
+Section 1.3: Worked Example : Cell Sorting
+------------------------------------------
+
+In order to better understand the modeling process that we’ve been describing so far, we need to walk through an example of an actual biological problem that we can use computational methods to simulate. For our first example, we will demonstrate how to think through each step of the process using the context of cells sorting. Cell sorting is a common developmental phenomenon in which random aggregates of cells form organized layers due to differential adhesion properties.
+Biological Observations
+
+First, we begin by asking: How do different cell types form ordered layered structures in developing embryos? Cells reorganize during early development, then maintain spatial relationships, forming coherent ordered layers of different cell types, as shown in Figure [#].
+
+.. figure:: images/introToModeling_files/cellSortImaging.jpg
+   :figwidth: 100%
+   :align: center
+   :alt: image of cells sorting during embryonic development
+   
+   Figure #: Diagram of cells forming cohesive layers during development.
+   
+This sorting phenomenon can be studied in vitro by making random aggregates of two embryonic cell types and seeing how they behave.
+
+.. figure:: images/introToModeling_files/cellSortImaging2.png
+   :figwidth: 70%
+   :align: center
+   :alt: image of cells sorting during embryonic development experiments
+   
+   Figure #: Experimental imaging of cells sorting from a random aggregate.
+
+In a randomly mixed aggregate of two embryonic cell types, cells of the same type form clusters, which gradually merge together until one cell type forms a sphere in the center of the aggregate, with the other type surrounding it. We call this phenomenon cell sorting and say that the outer cell type “engulfs” the inner cell type. Mixtures of the same pairs of cell types consistently put the same type to the center. If cell type A engulfs cell type B, and cell type B engulfs cell type C, then cell type A engulfs cell type C.
+
+.. figure:: images/introToModeling_files/cellSortingHeirarchy.png
+   :figwidth: 90%
+   :align: center
+   :alt: image of cells sorting during embryonic development experiments
+   
+   Figure #: Laboratory imaging of cell engulfment heirarchy.
+
+Cell ahesion in the "real world" is thought to be due to interactions between specialized adhesion molecules that sit on the surface of the cell membrane. The cell adhesion molecules (CAMs) that reside on the surface of each cell interact differently with the CAMs of other cells depending on their type. This results in differences in cell adhesion affinities across cell types, as cells "want" to interact with some CAMs more than others. A common result of these interactions is that cells prefer to adhere to other cells of the same type (i.e., how tissues are formed).
+
+This cell adhesion molecule phenomenon is quite complex, and creating a one-to-one model that included every component of the CAM interactions would require excessive amounts of setup and computational time. Fortunately, modeling this behavior is not necessary for addressing the questions that we are trying to answer with our model. Remember, our question is to see how the relative differences in adhesion affect the outcomes of the sorting process. So for our example, we want to abstract the interactions of CAMs between different cells in a way that makes the simulation setup and run time less prohibitive without sacrificing the usefulness of the model. 
+
+The late Malcolm Steinberg of Princeton University proposed the Differential Adhesion Hypothesis to explain cell sorting. This hypothesis suggests that cells of different types have a cell-type-dependent contact energy per unit surface area. When cells are placed in an aggregate, the pattern rearranges to minimize the total contact energy between cells (thus maximizing the adhesion between cells). We can use this as a starting point for defining our hypothesis for our own model. In essence, we can functionalize the CAM interactions at cell membrane contact points as a single relative adhesion value between each unique cell type.  We call this adhesion property *contact energy*. For our example with two cells and a medium, we end up with six total contact energy (J) values:
+
+#. J\ :sub:`cell1-cell1`
+#. J\ :sub:`cell1-cell2`
+#. J\ :sub:`cell2-cell2`
+#. J\ :sub:`cell1-medium`
+#. J\ :sub:`cell2-medium`
+#. J\ :sub:`medium-medium`
+
+With this simplification, we still end up with behavior similar to what we see in experiment, indicating that our assumptions do not affect to overall validity of our results. We will further discuss methods for validating models in later modules, but for now comparison to experimentally observed outcomes will suffice as a starting metric. We will show examples of this simulation in action (implemented in CompuCell3D) at the end of this section. 
+
+Section 1.3.1: Defining Initial Hypotheses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For our cell sorting example, we can start with the following assertion: Cells rearrange to minimize their total contact energy with their neighbors. This hypothesis includes several important assumptions:
+
+* Cell types have a consistent hierarchy of contact energies per unit surface area when they come into contact with their own and other cell types
+* The cell’s adhesivity (contact energy) depends on the number and type of cell adhesion molecules in its membrane
+* Cells fluctuate randomly within an aggregate
+* Cells don’t grow or change their properties during sorting
+* Less adhesive cell types engulf more adhesive cell types
+
+With this hypothesis and these assumptions in mind, we can set our goals for how we want to explore our hypothesis with our model. In this case, one goal might be to:
+
+“Model the evolution of a randomly mixed aggregate of two mesenchymal cell types due to Differential Adhesion and random cell motility.”
+
+This goal can be investigated by pursuing several specific questions:
+
+#. How does the outcome (configuration, rate of change of pattern) depend on the relative contact energies between the cell types and between the cells and medium? 
+#. Can Differential Adhesion and Random Cell Motility explain the qualitative patterns and rates observed in cell sorting experiments?
+
+Section 1.3.2: Defining Conceptual Model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once we have our hypothesis, our goals, and our specific questions in mind, the next step is to develop a conceptual model of the system under study. As discussed above in Section #.#.#, a conceptual model is a description of our system in terms of the components that we believe are relevant to answering our specific questions. Selecting which components are relevant is one of the key skills of the biological/computational modeler, and the specifics will always vary depending on your particular context. These components are broken into four categories: (1) Objects, (2) Properties and Interactions, (3) Initial and Boundary Conditions, and (4) Dynamics and Events. We will identify the relevant components for our cell sorting example.
+
+Objects
++++++++
+
+For the cell sorting model, there are two primary objects in the system:
+
+#. Multiple Cells of two Cell Types (Call them Dark and Light as in the image)
+#. Surrounding fluid Medium
+
+This could be further broken down into three objects if we consider each of the cells as separate object types. However, in our example, both types of cells will have the same base properties and can be considered as one larger object type of “cell.” If our cells had differing properties, shapes, or imposed behaviors, it could be more useful to consider them as separate objects.
+
+Object properties & Interactions
+++++++++++++++++++++++++++++++++
+
+We can make several assumptions (or assertions) about our objects and how they interact with each other in the model:
+
+#. Cells do not grow, shrink, divide or die, i.e. they have fixed volumes and surface areas
+#. Cells try to extend and retract their membranes
+#. No Medium is added or removed
+#. Cells appear isotopic or unpolarized, i.e. no internal structure, uniform surface properties 
+#. All Dark Cells behave the same
+#. All Light Cells behave the same
+#. Medium doesn’t “do” anything
+
+There could be more or fewer assumptions about the model, depending on your questions. For example, if your questions want to investigate cell sorting with more complex cell behavior like division or growth, we obviously cannot assume that cells do not divide or grow! These behaviors must be included in the setup of our model if we want valid output that addresses our questions of interest. The seven assumptions listed above are the assumptions that we will be using in the construction of our example model.
+
+Initial Conditions
+++++++++++++++++++
+
+Our initial conditions for this simulation are relatively straightforward:
+
+* A randomly mixed sphere of Cells of the two Types, surrounded by Medium
+
+The boundary conditions for this model are not critical at this stage. For now we will neglect boundaries, but we will discuss how boundary conditions affect simulation output in later modules.
+
+Dynamics & Events
++++++++++++++++++
+
+We have two primary dynamics in our system.
+
+#. Cells undergo random amoeboid movements by protruding and retracting their membrane. The net cell movement depends on the forces on the cell.
+#. Medium responds passively to cell movements.
+
+An event is a change in state, conditions, or rules within a system that is imposed either at a certain time or when certain conditions are met during the simulation. For now, our example simulation will not include any events.
+
+Conceptual Model Summary
+++++++++++++++++++++++++
+
+With the details listed in the previous section, we can construct a simple visual representation of our conceptual model so far.
+
+.. image:: images/introToModeling_files/cellSortConceptualModel.png
+   :scale: 70
+   :align: center
+   :alt: model elements diagram
+
+Next, we should start to think about our overall model structure and make some initial mental predictions about how it might behave during a simulation run. In our model, cells of different types have a cell-type-dependent contact energy per unit surface area. The pattern rearranges to minimize the total contact energy (maximize the adhesion between cells). 
+
+**Think about the following as we continue to the next section:** If you change the contact energies between cells, how should the final configuration of the cells in the experiment change?
+
+Section 1.3.3: Adhesion and Contact Energy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now that we have our conceptual model in place, let's get a little bit more specific about the behaviors that we might expect from the model output, given certain starting values.
+
+First, let's consider a single cell type surrounded by medium.
+
+.. image:: images/introToModeling_files/contact_key1.png
+   :scale: 100
+   :align: center
+   :alt: single cell contact diagram key 1
+
+.. image:: images/introToModeling_files/contact_checkerboard.png
+   :scale: 50
+   :align: center
+   :alt: single cell checkerboard contact diagram
+
+In this case, we have two contact energies:
+
+#. J\ :sub:`cell-cell`
+#. J\ :sub:`cell-medium`
+
+We can ignore the implied medium-medium contact energy value, as our earlier assumptions state that medium does not "do" anything (i.e., it does not interact with itself in meaningful ways in our system).
+
+In a checkerboard, each cell contacts the medium on all four sides, so we can calculate the total contact energy as:
+
+.. math:: H_\text{contact(checker)} = 4 \times 8 \times J_\text{cell-medium} = 32 \times J_\text{cell-medium}
+
+This is the most possible contact area between the cells and the medium. If the contact energy between cells and medium is higher than the energy between cells, then this would result in the highest possible energy value for the system. This configuration would not be stable in nature, as cell systems like this seek to minimize their overall energy. Let's consider another configuration.
+
+.. image:: images/introToModeling_files/contact_compact.png
+   :scale: 50
+   :align: center
+   :alt: single cell compact contact diagram
+
+If the same number cells are arranged in a compact square (with a notch), they contact the medium as little as possible, and the total contact energy is:
+
+.. math:: H_\text{contact(compact)} = 12 \times J_\text{cell-medium} + 10 \times J_\text{cell-cell}
+
+With the same energy value assumptions discussed above, this would have the lowest possible system contact energy, as it minimizes contact between the cells and the medium. All other configurations of the system have some intermediate energy between these two states. 
+
 
 1.4 Notes on Scoping a Modeling Project
 ---------------------------------------

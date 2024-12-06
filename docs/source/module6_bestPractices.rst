@@ -1,4 +1,4 @@
-Module 7: Suggested Best Practices
+Module 6: Suggested Best Practices
 ==================================
 
 This module will present a collection of "best practices" from various members of the biological modeling community.
