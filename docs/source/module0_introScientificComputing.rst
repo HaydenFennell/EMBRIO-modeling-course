@@ -1,10 +1,10 @@
-Introduction to Scientific Computing
-====================================
+Module 0: Introduction to Scientific Computing
+==============================================
 
 This section will provide the necessary background in Python programming needed to complete the rest of this course. While most models can be implemented using a number of different possible programming languages, we will be using Python as our language of choice throughout this course. Python is a widely used, open-source programming language with a wide variety of community-built packages for scientific use (numerical methods, data analysis, plotting and visualization, etc.)
 
-Mathematical Operations, Defining Variables, and Plotting
----------------------------------------------------------
+0.1 Mathematical Operations, Defining Variables, and Plotting
+-------------------------------------------------------------
 
 * Adapted from Mark Bakker Delft University of Technology
 * View this section as an executable Jupyter Notebook: `<https://tinyurl.com/y5s5ypvm>`_
@@ -113,15 +113,12 @@ used in some other languages, doesn’t work).
 
     a ** b
 
-Exercise 1a, First Python code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exercise 0.1.1a: First Python code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Compute the value of the polynomial :math:`y=ax^2+bx+c` at :math:`x=-2`,
 :math:`x=0`, and :math:`x=2.1` using :math:`a=1`, :math:`b=1`,
 :math:`c=-6` and print the results to the screen.
-
-
-Answer to Exercise 1a
 
 Division
 ~~~~~~~~
@@ -164,16 +161,13 @@ after the ``#`` is a comment in the code. Any text on the line after the
     print(f'{a} divided by {b} gives {c:10.3f}') # width 10 and three decimal places
     print(f'{a} divided by {b} gives {c:.3e}') # three decimal places scientific notation
 
-Exercise 1b, First Python code using f-strings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exercise 0.1.1b:First Python code using f-strings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Compute the value of the polynomial :math:`y=ax^2+bx+c` at :math:`x=-2`,
 :math:`x=0`, and :math:`x=2.1` using :math:`a=1`, :math:`b=1`,
 :math:`c=-6` and print the results to the screen using f-strings and 2
 decimal places.
-
-
-Answer to Exercise 1b
 
 More on variables
 ~~~~~~~~~~~~~~~~~
@@ -353,8 +347,8 @@ fourth…).
     plt.plot([1, 2, 3], [1, 3, 1], 'r')
     plt.title('second figure');
 
-Exercise 2, First graph
-~~~~~~~~~~~~~~~~~~~~~~~
+Exercise 0.1.2a: First graph
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Plot :math:`y=(x+2)(x-1)(x-2)` for :math:`x` going from :math:`-3` to
 :math:`+3` using a dashed red line. On the same figure, plot a blue
@@ -362,9 +356,6 @@ circle for every point where :math:`y` equals zero. Set the size of the
 markers to 10 (you may need to read the help of ``plt.plot`` to find out
 how to do that). Label the axes as ‘x-axis’ and ‘y-axis’. Add the title
 ‘First nice Python figure of Your Name’, where you enter your own name.
-
-
-Answer to Exercise 2
 
 Style
 ~~~~~
@@ -406,10 +397,8 @@ called PEP8. When these rules are applied, the code is as follows:
     y = a * x**2 + b * x + c  # Compute y for all x values
     plt.plot(x, y, linewidth=3)
 
-Use correct style in all other exercises and all Notebooks to come.
-
-Exercise 2b. First graph revisited
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exercise 0.1.2b: First graph revisited
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Go back to your Exercise 2 and apply correct style.
 
@@ -422,8 +411,8 @@ make sure the file is in the same directory as your notebook, or provide
 the full path. The filename (or path plus filename) needs to be between
 quotes.
 
-Exercise 3, Loading data and adding a legend
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exercise 0.1.3, Loading data and adding a legend
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You are provided with the data files containing the mean montly
 temperature of Holland, New York City, and Beijing. The Dutch data is
@@ -465,10 +454,8 @@ best place).
     plt.xticks(np.linspace(1, 12, 12))
     plt.legend(['Holland','New York','Beijing'], loc='best');
 
-Answer to Exercise 3
-
-Exercise 4, Subplots and fancy tick markers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exercise 0.1.4, Subplots and fancy tick markers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Load the average monthly air temperature and seawater temperature for
 Holland. Create one plot with two graphs above each other using the
@@ -478,9 +465,6 @@ horizontal axis as ‘jan’, ‘feb’, ‘mar’, etc., rather than 0,1,2,etc.
 ``plt.xticks?`` to find out how. In the bottom graph, plot the
 difference between the air and seawater temperature. Add legends, axes
 labels, the whole shebang.
-
-
-Answer to Exercise 4
 
 Colors
 ~~~~~~
@@ -533,8 +517,8 @@ graphs. Check out the matplotlib gallery to get an overview of many of
 the options. The following exercises use several of the matplotlib
 options.
 
-Exercise 5, Pie Chart
-~~~~~~~~~~~~~~~~~~~~~
+Exercise 0.1.5, Pie Chart
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 At the 2012 London Olympics, the top ten countries (plus the rest)
 receiving gold medals were
@@ -553,11 +537,8 @@ must be separated by comma’s like
 ``['MediumBlue','SpringGreen','BlueViolet']``; the sequence is repeated
 if it is not long enough.
 
-
-Answer to Exercise 5
-
-Exercise 6, Fill between
-~~~~~~~~~~~~~~~~~~~~~~~~
+Exercise 0.1.6, Fill between
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Load the air and sea temperature, as used in Exercise 4, but this time
 make one plot of temperature vs the number of the month and use the
@@ -566,173 +547,6 @@ horizontal axis. Specify the ``alpha`` keyword, which defines the
 transparancy. Some experimentation will give you a good value for alpha
 (stay between 0 and 1). Note that you need to specify the color using
 the ``color`` keyword argument.
-
-
-Answer to Exercise 6
-
-Answers for the exercises
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Answer to Exercise 1
-
-.. code:: ipython3
-
-    a = 1
-    b = 1
-    c = -6
-    x = -2
-    y = a * x ** 2 + b * x + c
-    print('y evaluated at x = -2 is', y)
-    x = 0 
-    y = a * x ** 2 + b * x + c
-    print('y evaluated at x = 0 is', y)
-    x = 2.1
-    y = a * x ** 2 + b * x + c
-    print('y evaluated at x = 2 is', y)
-
-.. code:: ipython3
-
-    # Errored Code
-    a = 1
-    b = 1
-    c = -6
-    x = -2
-    y = a * x ** 2 + b * x + c
-    print('y evaluated at x = -2 is', y)
-    x = 0 
-    a = 2
-    y = a * x ** 2 + b * x + c
-    print('y evaluated at x = 0 is', y)
-    x = 2.1
-    y = a * x ** 2 + b * x + c
-    print('y evaluated at x = 2 is', y)
-
-Back to Exercise 1a
-
-Answer to Exercise 1b
-
-.. code:: ipython3
-
-    a = 1
-    b = 1
-    c = -6
-    x = -2
-    y = a * x ** 2 + b * x + c
-    print(f'y evaluated at x = {x} is {y}')
-    x = 0 
-    y = a * x ** 2 + b * x + c
-    print(f'y evaluated at x = {x} is {y}')
-    x = 2.1
-    y = a * x ** 2 + b * x + c
-    print(f'y evaluated at x = {x} is {y:.2f}')
-
-
-Back to Exercise 1b
-
-Answer to Exercise 2
-
-.. code:: ipython3
-
-    x = np.linspace(-3, 3, 100)
-    y = (x + 2) * (x - 1) * (x - 2)
-    plt.plot(x, y, 'r--')
-    plt.plot([-2, 1, 2], [0, 0, 0], 'bo', markersize=10)
-    plt.xlabel('x-axis')
-    plt.ylabel('y-axis')
-    plt.title('First Python Figure of Mark Bakker');
-
-Back to Exercise 2
-
-Answer to Exercise 3
-
-.. code:: ipython3
-
-    holland = np.loadtxt('/content/ThermoData/holland_temperature.dat')
-    newyork= np.loadtxt('/content/ThermoData/newyork_temperature.dat')
-    beijing = np.loadtxt('/content/ThermoData/beijing_temperature.dat')
-    plt.plot(np.linspace(1, 12, 12), holland)
-    plt.plot(np.linspace(1, 12, 12), newyork)
-    plt.plot(np.linspace(1, 12, 12), beijing)
-    plt.xlabel('Number of the month')
-    plt.ylabel('Mean monthly temperature (Celcius)')
-    plt.xticks(np.linspace(1, 12, 12))
-    plt.legend(['Holland','New York','Beijing'], loc='best');
-
-.. code:: ipython3
-
-    # Errored Code
-    holland = np.loadtxt('/content/ThermoData/holland_temperature.dat')
-    newyork= np.loadtxt('/content/ThermoData/newyork_temperature.dat')
-    beijing = np.loadtxt('/content/ThermoData/beijing_temperature.dat')
-    plt.plot(np.linspace(1, 10, 10), holland)
-    plt.plot(np.linspace(1, 10, 10), newyork)
-    plt.plot(np.linspace(1, 12, 12), beijing)
-    plt.xlabel('Number of the month')
-    plt.ylabel('Mean monthly temperature (Celcius)')
-    plt.xticks(np.linspace(1, 10, 10))
-    plt.legend(['Holland','New York'], loc='best');
-
-
-Back to Exercise 3
-
-Answer to Exercise 4
-
-
-.. code:: ipython3
-
-    air = np.loadtxt('/content/ThermoData/holland_temperature.dat') 
-    sea = np.loadtxt('/content/ThermoData/holland_seawater.dat')
-    plt.subplot(211)
-    plt.plot(air, 'b', label='air temp')
-    plt.plot(sea, 'r', label='sea temp')
-    plt.legend(loc='best')
-    plt.ylabel('temp (Celcius)')
-    plt.xlim(0, 11)
-    plt.xticks([])
-    plt.subplot(212)
-    plt.plot(air-sea, 'ko')
-    plt.xticks(np.linspace(0, 11, 12),
-               ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'])
-    plt.xlim(0, 11)
-    plt.ylabel('air - sea temp (Celcius)');
-
-Back to Exercise 4
-
-Answer to Exercise 5
-
-.. code:: ipython3
-
-    gold = [46, 38, 29, 24, 13, 11, 11, 8, 8, 7, 107]
-    countries = ['USA', 'CHN', 'GBR', 'RUS', 'KOR', 'GER', 'FRA', 'ITA', 'HUN', 'AUS', 'OTHER']
-    plt.pie(gold, labels = countries, colors = ['Gold', 'MediumBlue', 'SpringGreen', 'BlueViolet'])
-    plt.axis('equal');
-
-.. code:: ipython3
-
-    gold = [46, 38, 29, 24, 13, 11, 11, 8, 8, 7, 107]
-    countries = ['USA', 'CHN', 'GBR', 'RUS', 'KOR', 'GER', 'FRA', 'ITA', 'HUN', 'AUS', 'Other']
-    plt.pie(gold, labels = countries, colors = ['Gold', 'MediumBlue', 'SpringGreen', 'BlueViolet'])
-    plt.legend('USA', 'CHN')
-    plt.axis('equal');
-
-Back to Exercise 5
-
-Answer to Exercise 6
-
-.. code:: ipython3
-
-    air = np.loadtxt('/content/ThermoData/holland_temperature.dat') 
-    sea = np.loadtxt('/content/ThermoData/holland_seawater.dat')
-    plt.fill_between(range(1, 13), air, color='b', alpha=0.3)
-    plt.fill_between(range(1, 13), sea, color='r', alpha=0.3)
-    plt.xticks(np.linspace(0, 11, 12), ['jan', 'feb', 'mar', 'apr',\
-               'may', 'jun', 'jul', 'aug', 'sep', ' oct', 'nov', 'dec'])
-    plt.xlim(1, 12)
-    plt.ylim(0, 20)
-    plt.xlabel('Month')
-    plt.ylabel('Temperature (Celcius)');
-
-Back to Exercise 6
 
 Iterative Computing: For Loops
 ------------------------------
@@ -868,7 +682,10 @@ of equations. Explore the following example with your group
 
 **Exercises**
 
-Using the above examples build a loop that prints your TA names. Click the "Begin" button below to try it yourself.
+Exercise 0.2.1: Printing with Loops
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using the above examples, build a loop that prints the names of your five favorite bands. Click the "Begin" button below to try it yourself.
 
 **[Interactive Functionality coming soon]**
 
@@ -936,8 +753,6 @@ a, b and c)
 
     32.0
 
-
-
 Note that only the most recent call of the function is returned here. To
 see the output of each time you call the function we need to explicitly
 capture the output and ask the notebook to print the function, as shown
@@ -977,7 +792,8 @@ Note that you can have functions that return multiple values
     a right triangle with sides of 6, and 8, will have a hypotenus of 10.0, and a perimeter of 24.0
     
 
-**Exercises**
+Exercise 0.3.1: Calling Custom Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Using the examples above, define a function for the following equation
 
@@ -995,4 +811,168 @@ the expected answer is ``-11.785502738497696``
     def exercise(a, x):
       
 
-**advanced** can write a function that includes a for loop
+**advanced** can write a function that includes a for loop.
+
+Answers for the exercises
+-------------------------
+
+Answer to Exercise 0.1.1a:
+
+.. code:: ipython3
+
+    a = 1
+    b = 1
+    c = -6
+    x = -2
+    y = a * x ** 2 + b * x + c
+    print('y evaluated at x = -2 is', y)
+    x = 0 
+    y = a * x ** 2 + b * x + c
+    print('y evaluated at x = 0 is', y)
+    x = 2.1
+    y = a * x ** 2 + b * x + c
+    print('y evaluated at x = 2 is', y)
+
+.. code:: ipython3
+
+    # Errored Code
+    a = 1
+    b = 1
+    c = -6
+    x = -2
+    y = a * x ** 2 + b * x + c
+    print('y evaluated at x = -2 is', y)
+    x = 0 
+    a = 2
+    y = a * x ** 2 + b * x + c
+    print('y evaluated at x = 0 is', y)
+    x = 2.1
+    y = a * x ** 2 + b * x + c
+    print('y evaluated at x = 2 is', y)
+
+Back to Exercise 1a
+
+Answer to Exercise 0.1.1b:
+
+.. code:: ipython3
+
+    a = 1
+    b = 1
+    c = -6
+    x = -2
+    y = a * x ** 2 + b * x + c
+    print(f'y evaluated at x = {x} is {y}')
+    x = 0 
+    y = a * x ** 2 + b * x + c
+    print(f'y evaluated at x = {x} is {y}')
+    x = 2.1
+    y = a * x ** 2 + b * x + c
+    print(f'y evaluated at x = {x} is {y:.2f}')
+
+
+Back to Exercise 1b
+
+Answer to Exercise 0.1.2
+
+.. code:: ipython3
+
+    x = np.linspace(-3, 3, 100)
+    y = (x + 2) * (x - 1) * (x - 2)
+    plt.plot(x, y, 'r--')
+    plt.plot([-2, 1, 2], [0, 0, 0], 'bo', markersize=10)
+    plt.xlabel('x-axis')
+    plt.ylabel('y-axis')
+    plt.title('First Python Figure of Mark Bakker');
+
+Back to Exercise 0.1.2
+
+Answer to Exercise 0.1.3
+
+.. code:: ipython3
+
+    holland = np.loadtxt('/content/ThermoData/holland_temperature.dat')
+    newyork= np.loadtxt('/content/ThermoData/newyork_temperature.dat')
+    beijing = np.loadtxt('/content/ThermoData/beijing_temperature.dat')
+    plt.plot(np.linspace(1, 12, 12), holland)
+    plt.plot(np.linspace(1, 12, 12), newyork)
+    plt.plot(np.linspace(1, 12, 12), beijing)
+    plt.xlabel('Number of the month')
+    plt.ylabel('Mean monthly temperature (Celcius)')
+    plt.xticks(np.linspace(1, 12, 12))
+    plt.legend(['Holland','New York','Beijing'], loc='best');
+
+.. code:: ipython3
+
+    # Errored Code
+    holland = np.loadtxt('/content/ThermoData/holland_temperature.dat')
+    newyork= np.loadtxt('/content/ThermoData/newyork_temperature.dat')
+    beijing = np.loadtxt('/content/ThermoData/beijing_temperature.dat')
+    plt.plot(np.linspace(1, 10, 10), holland)
+    plt.plot(np.linspace(1, 10, 10), newyork)
+    plt.plot(np.linspace(1, 12, 12), beijing)
+    plt.xlabel('Number of the month')
+    plt.ylabel('Mean monthly temperature (Celcius)')
+    plt.xticks(np.linspace(1, 10, 10))
+    plt.legend(['Holland','New York'], loc='best');
+
+
+Back to Exercise 0.1.3
+
+Answer to Exercise 0.1.4
+
+
+.. code:: ipython3
+
+    air = np.loadtxt('/content/ThermoData/holland_temperature.dat') 
+    sea = np.loadtxt('/content/ThermoData/holland_seawater.dat')
+    plt.subplot(211)
+    plt.plot(air, 'b', label='air temp')
+    plt.plot(sea, 'r', label='sea temp')
+    plt.legend(loc='best')
+    plt.ylabel('temp (Celcius)')
+    plt.xlim(0, 11)
+    plt.xticks([])
+    plt.subplot(212)
+    plt.plot(air-sea, 'ko')
+    plt.xticks(np.linspace(0, 11, 12),
+               ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'])
+    plt.xlim(0, 11)
+    plt.ylabel('air - sea temp (Celcius)');
+
+Back to Exercise 0.1.4
+
+Answer to Exercise 0.1.5
+
+.. code:: ipython3
+
+    gold = [46, 38, 29, 24, 13, 11, 11, 8, 8, 7, 107]
+    countries = ['USA', 'CHN', 'GBR', 'RUS', 'KOR', 'GER', 'FRA', 'ITA', 'HUN', 'AUS', 'OTHER']
+    plt.pie(gold, labels = countries, colors = ['Gold', 'MediumBlue', 'SpringGreen', 'BlueViolet'])
+    plt.axis('equal');
+
+.. code:: ipython3
+
+    gold = [46, 38, 29, 24, 13, 11, 11, 8, 8, 7, 107]
+    countries = ['USA', 'CHN', 'GBR', 'RUS', 'KOR', 'GER', 'FRA', 'ITA', 'HUN', 'AUS', 'Other']
+    plt.pie(gold, labels = countries, colors = ['Gold', 'MediumBlue', 'SpringGreen', 'BlueViolet'])
+    plt.legend('USA', 'CHN')
+    plt.axis('equal');
+
+Back to Exercise 0.1.5
+
+Answer to Exercise 0.1.6
+
+.. code:: ipython3
+
+    air = np.loadtxt('/content/ThermoData/holland_temperature.dat') 
+    sea = np.loadtxt('/content/ThermoData/holland_seawater.dat')
+    plt.fill_between(range(1, 13), air, color='b', alpha=0.3)
+    plt.fill_between(range(1, 13), sea, color='r', alpha=0.3)
+    plt.xticks(np.linspace(0, 11, 12), ['jan', 'feb', 'mar', 'apr',\
+               'may', 'jun', 'jul', 'aug', 'sep', ' oct', 'nov', 'dec'])
+    plt.xlim(1, 12)
+    plt.ylim(0, 20)
+    plt.xlabel('Month')
+    plt.ylabel('Temperature (Celcius)');
+
+Back to Exercise 0.1.6

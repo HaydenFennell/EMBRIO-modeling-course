@@ -15,7 +15,7 @@ EMBRIO Multiscale Modeling E-Book
    module0_introScientificComputing
    module1_introToModeling
    module2_buildingMathModels
-   module3_compImplementation
+   module3_implementation
    module4_dataAnalysis
    module5_validity
    module6_bestPractices

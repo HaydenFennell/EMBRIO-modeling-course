@@ -1,27 +1,27 @@
 Module 5: Validity, Reliability, and Model Improvement
 ======================================================
 
-6.1: Validation vs Verification
+5.1: Validation vs Verification
 -------------------------------
 
 [Coming soon]
 
-6.2: Methods for Verifying a Model/Simulation
+5.2: Methods for Verifying a Model/Simulation
 ---------------------------------------------
 
 [Coming soon]
 
-6.3: Methods for Validating a Model/Simulation
+5.3: Methods for Validating a Model/Simulation
 ----------------------------------------------
 
 [Coming soon]
 
-6.4: Pairing Models with Experiment
+5.4: Pairing Models with Experiment
 -----------------------------------
 
 [Coming soon]
 
-6.5: Model Optimization
+5.5: Model Optimization
 -----------------------
 
 [Coming soon]

@@ -1,4 +1,4 @@
-Notes on Current Build (0.2.5)
+Notes on Current Build (0.3)
 ==============================
 
 This site is currently a prototype, intended primarily to test functionality of the content delivery platform. We will begin populating module content soon. Please send any and all feedback to Hayden Fennell at hfennel **at** iu **dot** edu.

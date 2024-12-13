@@ -1,22 +1,22 @@
 Module 4: Data Analysis
 =======================
 
-5.1: Managing and Preparing Data
+4.1: Managing and Preparing Data
 --------------------------------
 
 [Coming soon]
 
-5.2: Data Visualization
+4.2: Data Visualization
 -----------------------
 
 [Coming soon]
 
-5.3: Model Fitting
+4.3: Model Fitting
 ------------------
 
 [Coming soon]
 
-5.4: Statistical Methods (?)
+4.4: Statistical Methods (?)
 ----------------------------
 
 [Coming soon]

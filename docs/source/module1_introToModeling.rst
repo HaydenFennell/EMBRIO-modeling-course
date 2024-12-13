@@ -200,10 +200,6 @@ For the first question, we should revisit the entire workflow processes and revi
 For the second question we should determine if the computable model is capable of answering or initial hypothesis. Note that here we are not asking if the model does answer the question, instead we are just asking if it can answer the question. We should examine the model outputs and determine if they are comparable to some experimentally observed data. If there are no model outputs that can be directly mapped to experimental data, then we have no way to verify the basic functioning of the model.
 
 
-
-1.3 Worked Example: Cell Sorting
---------------------------------
-
 Section 1.3: Worked Example : Cell Sorting
 ------------------------------------------
 
@@ -376,13 +372,15 @@ If the same number cells are arranged in a compact square (with a notch), they c
 
 With the same energy value assumptions discussed above, this would have the lowest possible system contact energy, as it minimizes contact between the cells and the medium. All other configurations of the system have some intermediate energy between these two states. 
 
+An important detail to note here is that in our model, the "preferred" configuration of the system is determined by how we define our contact energies. Although in nature we would expect to see the compact configuration, our model only behaves that way because we have chosen values that create that behavior. If we reverse our contact energy assignments (i.e., making the contact energy between cells and medium **lower** than the contact energy between cells and cells), the checkerboard configuration would be preferred, as that would minimize the overall contact energy in that case. So it is very important when setting up our models that we have a good understanding of our physical observations of the system and how our modeled values represent those observations.
 
-1.4 Notes on Scoping a Modeling Project
----------------------------------------
 
-[Coming soon]
+1.4 Scoping a Modeling Project
+------------------------------
+
+[Updating on 12/14/24]
 
 1.5 Model Abstraction Exercises
 -------------------------------
 
-[Coming soon]
+[Updating on 12/14/24]
