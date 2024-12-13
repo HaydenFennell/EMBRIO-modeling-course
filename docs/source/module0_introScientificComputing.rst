@@ -548,8 +548,8 @@ transparancy. Some experimentation will give you a good value for alpha
 (stay between 0 and 1). Note that you need to specify the color using
 the ``color`` keyword argument.
 
-Iterative Computing: For Loops
-------------------------------
+0.2: Loops and Logic
+--------------------
 
 * Adapted from Mark Bakker Delft University of Technology
 * View this section as an executable Jupyter Notebook: `<https://tinyurl.com/r64mryn>`_
@@ -689,8 +689,8 @@ Using the above examples, build a loop that prints the names of your five favori
 
 **[Interactive Functionality coming soon]**
 
-Making Reusable Code: Defining Functions
-----------------------------------------
+0.3: Making Reusable Code — Defining Functions
+----------------------------------------------
 
 * Adapted from Mark Bakker Delft University of Technology
 * View this section as an executable Jupyter Notebook: `<https://tinyurl.com/rvhzpuq>`_
@@ -813,8 +813,8 @@ the expected answer is ``-11.785502738497696``
 
 **advanced** can write a function that includes a for loop.
 
-Answers for the exercises
--------------------------
+0.4: Answers for the exercises
+------------------------------
 
 Answer to Exercise 0.1.1a:
 
