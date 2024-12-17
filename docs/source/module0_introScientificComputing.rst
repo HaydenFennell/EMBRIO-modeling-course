@@ -15,54 +15,36 @@ code that we provide. We know that this is not a programming course so
 we keep the coding burden very light. We make extensive use of text
 fields like this to ‘scaffold’ the upcoming exercise.
 
-Note: Please use google chrome to make all the functions work!
+**Note:** If you decide to use the notebooks online to follow along, we recommend using Google Chrome to make sure all the functions work smoothly. Other browsers should work, but if you encounter problems with formatting or cells not running properly, try running the notebook again in Chrome as your first debugging step.
 
-Python acts very similarly to MatLab. Today we are going to go over the
-basics of defining variables and plotting things. If you think back to
-what you learned in ENGR 132, you will see that python is very similar
-to matlab. For example you can use python as a simple calculator.
+In this section, we are going to go over the basics of defining variables and plotting things. For our first example, we will demonstrate how to use Python as a simple calculator. As we work through the following examples, feel free to use code commenting to take notes on what the different parts of each command do. You can save the notebook linked above to your own google drive and always have your own copy for future reference.
 
-**As we work through the following examples please use code commenting
-to take notes on what the different parts of each command do. You can
-save this notebook to your own google drive and always have this as a
-reference for the rest of the course.**
-
-Position your cursor in the code cell below and hit [shift][enter]. The
-output should be 12 (-:
+The cell below shows the sytax for basic multiplication in Python. When running this in a Python shell, or when executing a cell in your Colab notebook, the Python interpreter will output a value of 12.
 
 .. code:: ipython3
 
     6 * 2
 
 Python is not fussy about spaces. Look at the code in the following
-cell…even though the 6 and the 2 are much further apart, if you click
-within it and hit [shift][enter] you will see it still runs
+cell…even though the 6 and the 2 are much further apart, it will still run as though there were no extra spaces.
 
 .. code:: ipython3
 
     6   *                        2
 
-Double click on the text here and you will see that you can edit this
-text. This allows you to take notes for your understanding directly in
-the text.
-
-If you want to write down a snippet of code that you don’t want to run
-you can do that by setting it off with a triple backticks (the button
-next to the tilde to the left of the number 1) like below:
-
-::
-
-   # This is formatted as code
-
-You can also add comments directly in the code if you want to add some
-details to what that line of code does. In the example below you can see
-a comment line that does not affect the code but it just to help
-understand the code. Good commenting is good coding practice!
+If you want to "comment out" a line of code that you want to leave in your document but that you *don’t* want to run, you can do that by placing a "#" at the start of the line. You can comment out blocks of code by adding the "#" to the start of each line in the block. Many code editors will have functions that allow you to comment out large blocks of highlighted text with a single command.
 
 .. code:: ipython3
 
-    # This line calculates the product of 6 and 2
-    6 * 2
+   # This is a comment in Python. It will not be run by the program.
+   # The value output from running the command below should be 12
+   6 * 2
+
+You can also add comments directly in the code if you want to add some details to what that line of code does. In the example below you can see a comment line that does not affect the code but it just to help understand the code. Good commenting is good coding practice!
+
+.. code:: ipython3
+
+   6 * 2 # This line calculates the product of 6 and 2
 
 **Defining Variables.**
 

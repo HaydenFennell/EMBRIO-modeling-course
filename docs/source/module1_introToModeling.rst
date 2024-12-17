@@ -7,14 +7,7 @@ This Module will provide an introduction to the process of biological modeling, 
 #. Generate meaningful questions and hypothesis about a biological problem of interest
 #. Create a qualitative model to represent the biological system
 
-1.1 What is Modeling?
----------------------
-
-Before we begin discussing how to start building a model, it is important to define some terms. First and foremost, we should put forth a clear definition of what exactly we mean by the terms "model" and "simulation." Models take on many different forms depending on the field of study, so a shared understanding of modeling before we begin the course is key.
-
-[EDITOR'S NOTE: Still working on wrangling this section into something manageable. Will be expanding on this point in the next update.]
-
-1.2 The Biological Modeling Workflow
+1.1 The Biological Modeling Workflow
 ------------------------------------
 
 Developing useful mechanism-based computational biology models requires discipline and progression through a series of logical steps. Typically, one starts from biological observations and gradually develop mechanism-based understanding that explain the biological system in a way that provides new insights in the normal and abnormal operation of the biological system. 
@@ -23,7 +16,7 @@ By necessity, computational biology models leave out a great deal of complexity 
 
 A critical aspect of developing useful computational biology models is to use a well-defined process that progresses from biological observation and understanding, through the development of physical and mathematical definitions of the key components and processes in the system, leading finally to a computational instantiation of that conceptualization. Many of the problems encountered in developing useful computational biology models arise from trying to short circuit these steps. In addition, to apply a computational modeling in, for example, a clinical domain requires that the model is credible in terms of both the biology represented and the computational implementation. What is often overlooked (or undervalued) is the need to document the entire trajectory of the model development process.
  
-1.2.1: Model Representations
+1.1.1: Model Representations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 People often devote a great deal of effort to building mathematical models and implementing them in computer code without spending enough effort in defining what biological concepts and processes those equations or code represent or what the end goal of the simulation is. It is critically important that sufficient time is spent in defining and understanding the biology and goals of the modeling project. Only after that understanding and scoping has been completed should the modeler move on writing computer code and running and analyzing the simulations. We will present this model development workflow as a linear process, but in practice modelers will iteratively refine their models, revisiting, revising and improving their descriptions at each level of abstraction as they proceed.
@@ -58,7 +51,7 @@ These three "types" of model can be thought of as different **representations** 
 
 The rest of this module will discuss the steps of the modeling process for each of the three model types in more detail. Some aspects of this process will be overviewed briefly in this module, as they are covered in more detail in later modules. For now, the focus is on understanding the entire process before we start getting into the details of how to dig into each step.
    
-1.2.2 The Biological (Conceptual) Model
+1.1.2 The Biological (Conceptual) Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The biological (i.e., conceptual) model for our system can be constructed in three primary steps: (1) listing our biological observations of interest, (2) generating meaningful questions and hypotheses that we want to investigate with our model, and (3) constructing a qualitative model. This section will provide details on how to get started with refining a conceptual model of your system of interest.
@@ -209,7 +202,7 @@ The above set of tables and descriptions defines a Model template. To convert it
 
 You can write a paragraph defining where the objects are initially, what their states are and what the boundary conditions are. For example, we need to specify the number, location and size of the cells. What the initial Oxygen concentration is everywhere. What happens at the boundary of the Environment when it is encountered by cells (rigid wall, absorbing, periodic) or Oxygen (absorbing, impermeable, source…). Are there any events or processes that add or remove objects such as cells or Oxygen?
 
-1.2.3 The Mathematical Model
+1.1.3 The Mathematical Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Selection
@@ -235,7 +228,7 @@ In rare instances when we can analyze the equations in a Quantitative Model anal
 
 We are now at a point in the model development process where we need to move from the biological and mathematical domains into the third model domain, the computational domain. As mentioned earlier, it is best if we make this transition into an existing code base suitable for the class of problem we are working on. Custom code can be written, and in some cases that is the only option, but in general our model development processes will be easier and more robust if we use an existing code base. 
 
-1.2.4 The Computational Model
+1.1.4 The Computational Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Selection
@@ -289,7 +282,7 @@ For the first question, we should revisit the entire workflow processes and revi
 For the second question we should determine if the computable model is capable of answering or initial hypothesis. Note that here we are not asking if the model does answer the question, instead we are just asking if it can answer the question. We should examine the model outputs and determine if they are comparable to some experimentally observed data. If there are no model outputs that can be directly mapped to experimental data, then we have no way to verify the basic functioning of the model.
 
 
-1.3: Worked Example : Cell Sorting
+1.2: Worked Example : Cell Sorting
 ----------------------------------
 
 In order to better understand the modeling process that we’ve been describing so far, we need to walk through an example of an actual biological problem that we can use computational methods to simulate. For our first example, we will demonstrate how to think through each step of the process using the context of cells sorting. Cell sorting is a common developmental phenomenon in which random aggregates of cells form organized layers due to differential adhesion properties.
@@ -337,7 +330,7 @@ The late Malcolm Steinberg of Princeton University proposed the Differential Adh
 
 With this simplification, we still end up with behavior similar to what we see in experiment, indicating that our assumptions do not affect to overall validity of our results. We will further discuss methods for validating models in later modules, but for now comparison to experimentally observed outcomes will suffice as a starting metric. We will show examples of this simulation in action (implemented in CompuCell3D) at the end of this section. 
 
-Section 1.3.1: Defining Initial Hypotheses
+Section 1.2.1: Defining Initial Hypotheses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For our cell sorting example, we can start with the following assertion: Cells rearrange to minimize their total contact energy with their neighbors. This hypothesis includes several important assumptions:
@@ -357,7 +350,7 @@ This goal can be investigated by pursuing several specific questions:
 #. How does the outcome (configuration, rate of change of pattern) depend on the relative contact energies between the cell types and between the cells and medium? 
 #. Can Differential Adhesion and Random Cell Motility explain the qualitative patterns and rates observed in cell sorting experiments?
 
-Section 1.3.2: Defining Conceptual Model
+Section 1.2.2: Defining Conceptual Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once we have our hypothesis, our goals, and our specific questions in mind, the next step is to develop a conceptual model of the system under study. As discussed above in Section #.#.#, a conceptual model is a description of our system in terms of the components that we believe are relevant to answering our specific questions. Selecting which components are relevant is one of the key skills of the biological/computational modeler, and the specifics will always vary depending on your particular context. These components are broken into four categories: (1) Objects, (2) Properties and Interactions, (3) Initial and Boundary Conditions, and (4) Dynamics and Events. We will identify the relevant components for our cell sorting example.
@@ -420,7 +413,7 @@ Next, we should start to think about our overall model structure and make some i
 
 **Think about the following as we continue to the next section:** If you change the contact energies between cells, how should the final configuration of the cells in the experiment change?
 
-Section 1.3.3: Adhesion and Contact Energy
+Section 1.2.3: Adhesion and Contact Energy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that we have our conceptual model in place, let's get a little bit more specific about the behaviors that we might expect from the model output, given certain starting values.
@@ -463,13 +456,9 @@ With the same energy value assumptions discussed above, this would have the lowe
 
 An important detail to note here is that in our model, the "preferred" configuration of the system is determined by how we define our contact energies. Although in nature we would expect to see the compact configuration, our model only behaves that way because we have chosen values that create that behavior. If we reverse our contact energy assignments (i.e., making the contact energy between cells and medium **lower** than the contact energy between cells and cells), the checkerboard configuration would be preferred, as that would minimize the overall contact energy in that case. So it is very important when setting up our models that we have a good understanding of our physical observations of the system and how our modeled values represent those observations.
 
+1.3: Exercises
+--------------
 
-1.4 Scoping a Modeling Project
-------------------------------
+This section will include several model conceptualization exercises. 
 
-[Updating on 12/14/24]
-
-1.5 Summary
------------
-
-This module has covered the following topics:
+Content in progress. Update scheduled for Version 1.0 release.
