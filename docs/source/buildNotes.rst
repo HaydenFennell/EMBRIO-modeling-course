@@ -1,4 +1,4 @@
-Notes on Current Build (0.3)
+Notes on Current Build (0.5)
 ==============================
 
 This site is currently a prototype, intended primarily to test functionality of the content delivery platform. We will begin populating module content soon. Please send any and all feedback to Hayden Fennell at hfennel **at** iu **dot** edu.
@@ -24,19 +24,19 @@ This site will follow a weekly update schedule. Updates will be pushed and the b
      - Delivery Date
    * - Module 0: Introduction to Scientific Computing
      - Python basics, loops, data handling
-     - December 9, 2024 (Edits/Cleanup)
+     - December 7, 2024 (Edits/Cleanup)
    * - Module 1: Introduction to Biological Modeling
      - The Modeling Workflow, Identifying meaningful hypothesis, model abstraction
-     - December 9, 2024
+     - December 13, 2024
    * - Module 2: Building Mathematical Models
      - ODE Modeling, PDE Solution approaches and finite difference method, common equation types
-     - December 11, 2024 
+     - December 16, 2024 
    * - Module 3: Converting Math To Code
      - Executing equations in code, model specification and parameterization, common simulation methodologies
-     - December 13, 2024
+     - December 20, 2024
    * - Module 4: Data Analysis
      - Managing and cleaning data, visualization, model fitting, statistical methods
-     - December 20, 2024 (Draft)
+     - December 30, 2024 (Draft)
    * - Module 5: Validity, Reliability, and Optimization
      - Validation vs verification, methods, pairing models with experiment, model optimization
      - January, 2025 
