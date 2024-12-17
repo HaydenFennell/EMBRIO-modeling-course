@@ -4,7 +4,7 @@
 Module 2: Building Mathematical Models
 ======================================
 
-**[Intro text: Updating on 12/15/24]**
+This section will introduce you to the basics of mathematical modeling in biological contexts using differential equations. We will also cover numerical methods for how to utilize these equations in computational practice, as well as some common equation templates that you may be able to modify and apply to model your own systems of interest. 
 
 2.1: Modeling with Differential Equations
 -----------------------------------------
@@ -28,12 +28,12 @@ To the non-mathematician, these equations can seem very complicated at face valu
 Example: Newton's Law of Cooling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**[Updating on 12/14/24]**
+**[Updating on 12/20/24]**
 
 Example: Population Dynamics (Birth/Death) Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**[Updating on 12/14/24]**
+**[Updating on 12/20/24]**
 
 2.2: Partial Differential Equations
 -----------------------------------
