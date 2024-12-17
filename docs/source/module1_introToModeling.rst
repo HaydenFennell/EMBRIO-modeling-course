@@ -45,12 +45,16 @@ Each of these steps requires significant consideration in the planning of a mode
 
 These three "types" of model can be thought of as different **representations** of the same system. These three representations can be used together to provide us with a level of understanding of a system that can't be reached by investigating a single model in isolation. Exploring, tracking, and documenting these interactions between system representations can be thought of as the core job of the modeler. While tasks and skills like creating informative biological diagrams and developing computer simulations are also important modeling jobs, the larger act of "modeling" can be thought of as the work entailed in bringing these three representations into useful harmony.
 
+|
+
 .. figure:: images/introToModeling_files/modelRepresentations.png
    :figwidth: 70%
    :align: center
    :alt: model representations triangle diagram
    
    Figure 2: The model representations diagram. The three types of models help a modeler understand the system of study through distinct processes of abstraction, implementation, and meaning-making between model types.
+
+|
 
 The rest of this module will discuss the steps of the modeling process for each of the three model types in more detail. Some aspects of this process will be overviewed briefly in this module, as they are covered in more detail in later modules. For now, the focus is on understanding the entire process before we start getting into the details of how to dig into each step.
    
@@ -64,8 +68,13 @@ Biological observations
 
 The key starting point for our biological/conceptual model is to begin by writing down a list of the key biological observations you wish to explore. Often the best starting point for a multi-cell scale model are the cartoons biologists use to describe a tissue or organ. For example, the major cell types in the liver and a representation of the VEGF driven angiogenesis signaling pathway are described as cartoons in Figure # below. This simple viewpoint is used by biologists to graphically represent the key players and the key understanding of a biological process. This layout concisely lists the major components of the system.
 
-**[Figure Here (Need to find a better one than we originally had – resolution too low)]**
- 
+.. figure:: images/introToModeling_files/biologicalCartoon.png
+   :figwidth: 100%
+   :align: center
+   :alt: example of biological cartoon diagram
+   
+   Figure 3: A typical biological cartoons for a tissue and a signaling pathway. `Left: <http://www.eclinpath.com/chemistry/liver/liver-structure-and-function/liverlobule/>`_ Shown is a small section of the liver showing the major cell types (hepatocyte, endothelial cell, …), the sinusoidal blood vessel lumen, and a greatly simplified representation of the spatial relationships among the key components (not to scale). `Right: <http://www.genecopoeia.com/product/search/pathway/h_vegfPathway.php>`_ The VEGF signaling pathway leading to angiogenesis (new blood vessel formation).
+
 Using the simple cartoon showing the key objects, define the key experimental observations you wish to explain. For example:
 
 * What processes are the objects involved in? 
@@ -113,7 +122,87 @@ Once you have your hypotheses defined, the next step is to spend some time build
 
 Based on the general observations in the previous step, define the Objects you will initially include in your model (you can always come back to this later and add or eliminate them). Put these Objects into a table and assign them the Properties that you think are clearly going to be important. Remember that nothing exists in your model until you assert it! If you assert an Object, it does not have qualities like position or volume unless you say it does!
 
-**[Insert table-based example here]**
+In the following, begin by focusing on the names and identities of the Objects, Behaviors and Interactions, then think through the Properties to characterize them. Don’t worry too much if initially the identity and names of the Parameters are not so clear. These are often implementation dependent and can be refined later.
+
+In the following, begin by focusing on the names and identities of the Objects, Behaviors and Interactions, then think through the Properties to characterize them. Don’t worry too much if initially the identity and names of the Parameters are not so clear. These are often implementation dependent and can be refined later.
+
++-------------+----------------+----------------+
+| Object      | Properties     |  Property Type |
++=============+================+================+
+| Environment | Spatial-extent | Parameter      |
++-------------+----------------+----------------+
+| Cell        | Position       | Variable       |
++-------------+----------------+----------------+
+
+Now, based on your analysis of the biology of the problem, begin to define the Behaviors (processes) and Interaction for your Objects. For Behaviors, list the Objects they affect and the Object Properties that they involve.
+
++----------+--------+-----------------+
+| Behavior | Object | Properties      |
++==========+========+=================+
+| Movement | Cell   | Object Velocity |
++----------+--------+-----------------+
+
+Each time you include a Behavior, you will likely find that you need to add additional Properties to the appropriate Object definition so that the model is self-consistent.
+
++-------------+----------------+---------------+
+| Object      | Properties     | Property Type |
++=============+================+===============+
+| Environment | Spatial-extent | Parameter     |
++-------------+----------------+---------------+
+| Cell        | Position       | Variable      |
+|             +----------------+---------------+
+|             | Velocity       | Variable      |
++-------------+----------------+---------------+
+
+For Interactions (or processes), list the participating Objects and the relevant properties that affect the interaction
+
++--------------------+---------------------+----------------+---------------+
+| Interaction        | Participant Objects | Properties     | Property Type |
++====================+=====================+================+===============+
+| Cell-Cell Adhesion | Cell 1              | Cadherin Level | Parameter     |
+|                    +---------------------+----------------+---------------+
+|                    | Cell 2              | Cadherin Level | Parameter     |
++--------------------+---------------------+----------------+---------------+
+| Oxygen Uptake      | Cell                | Uptake Rate    | Parameter     |
+|                    +---------------------+----------------+---------------+
+|                    | Oxygen Field        | Concentration  | Variable      |
++--------------------+---------------------+----------------+---------------+
+
+Note that we now need to go back and define the Oxygen Concentration Field Object
+
++--------------+-------------------+---------------+
+| Object       | Properties        | Property Type |
++==============+===================+===============+
+| Environment  | Spatial-extent    | Parameter     |
++--------------+-------------------+---------------+
+| Cell         | Position          | Variable      |
+|              +-------------------+---------------+
+|              | Velocity          | Variable      |
++--------------+-------------------+---------------+
+| Oxygen Field | Concentration     | Variable      |
+|              +-------------------+---------------+
+|              |Diffusion Constant | Parameter     |
++--------------+-------------------+---------------+
+
+If we have an Oxygen Field, we know that the supply of Oxygen available to the cells will depend on the diffusion rate of Oxygen, so we need to add the Diffusion Behavior to the Field object.
+
++-----------+--------------------+------------------------+
+| Behavior  | Participant Object | Properties             |
++===========+====================+========================+
+| Diffusion | Oxygen Field       | Diffucsion Coefficient |
++-----------+--------------------+------------------------+
+
+Now we need to define the dynamics. In general, discrete objects move based on their current velocity and the forces applied to them, and Fields evolve due to diffusion.
+
++-----------+----------------------------+------------------------+--------------------------+
+| Dynamics  | Participant Objects        | Participant            | Property Affected        |
+|           |                            | Behaviors/Interactions |                          |
++===========+============================+========================+==========================+
+| Movement  | Cell                       | Movement (Velocity)    | Position                 |
++-----------+----------------------------+------------------------+--------------------------+
+| Diffusion | Oxygen Field               | Cell (Positions),      | Field (Concentration),   |
+| & Uptake  |                            | Diffusion              | Cells (Amount of Oxygen) |
++-----------+----------------------------+------------------------+--------------------------+
 
 We should review our qualitative verbal model a few times to make sure it is consistent and complete and anything we call for in one place is defined somewhere in the model.
 The above set of tables and descriptions defines a Model template. To convert it into something that can describe a biological situation, we will need to create a Model Instance, that specifies our initial and boundary conditions. We can do that now, if we are comfortable with it, otherwise we can come back to them as we continue to develop our model.
@@ -128,8 +217,8 @@ Selection
 
 As in the selection step for the Biological Model, we must decide which components of the Biological Model can and will be included in the Mathematical Model. In general, it is unlikely that everything in the Biological Model will be representable in the Mathematical Model. It is likely that simplification will need to be made, or perhaps multiple concepts in the Biological Model will be aggregated in the Mathematical Model. In any case this selection step decides which components will propagate into the Mathematical Model.
 
-Quatitative Model
-+++++++++++++++++
+Quantitative Model
+++++++++++++++++++
 
 In the next stage of model building, we refine the Qualitative Model into a specific mathematical representation, our Quantitative Model. We need to represent all the concepts we have defined in our qualitative model. We define the level of detail of our description and which specific aspects of processes we will include in our model. In making these choices, we decide what numeric formulism and parameters we will use in the model. In the case of a chemical reaction, we would decide if a reaction rate obeyed Mass-Action, Michaelis-Menten, Hill or some other rate law. For spatial objects, if we are describing a cell Object, a model might specify its position and volume, but not its specific shape, or might define an elliptical cell with specific major and minor axes, but arbitrary orientation, or might specify a cell with a specific volume and membrane area, or a detailed but static shape for a complex cell like a neuron. A chemical in a Field might be present everywhere and its changes in concentration depend only on diffusion (in which case we would need to define a diffusion constant) or it might be carried (advected) by flow of the fluid, and/or the movement of cells. Diffusion might be uniform everywhere (in which case we would have a single diffusion constant) or it might be reduced at cell membranes or inside cells. If the diffusion occurs in extracellular matrix, it might differ in rate depending on the orientation of the matrix fibers. For cell motility, we might decide if the motion is directed or random (and if so, how we will describe the velocity profile). Usually, we will start with the simplest, most generic assumptions, and add complexity only when a simpler model fails to reproduce our observations or if we have specific experimental evidence of the importance of a complex microscopic mechanism. In the latter case, we should always compare the consequences of the more complex mechanism with a simpler one.
 
@@ -200,8 +289,8 @@ For the first question, we should revisit the entire workflow processes and revi
 For the second question we should determine if the computable model is capable of answering or initial hypothesis. Note that here we are not asking if the model does answer the question, instead we are just asking if it can answer the question. We should examine the model outputs and determine if they are comparable to some experimentally observed data. If there are no model outputs that can be directly mapped to experimental data, then we have no way to verify the basic functioning of the model.
 
 
-Section 1.3: Worked Example : Cell Sorting
-------------------------------------------
+1.3: Worked Example : Cell Sorting
+----------------------------------
 
 In order to better understand the modeling process that we’ve been describing so far, we need to walk through an example of an actual biological problem that we can use computational methods to simulate. For our first example, we will demonstrate how to think through each step of the process using the context of cells sorting. Cell sorting is a common developmental phenomenon in which random aggregates of cells form organized layers due to differential adhesion properties.
 Biological Observations
@@ -380,7 +469,7 @@ An important detail to note here is that in our model, the "preferred" configura
 
 [Updating on 12/14/24]
 
-1.5 Model Abstraction Exercises
--------------------------------
+1.5 Summary
+-----------
 
-[Updating on 12/14/24]
+This module has covered the following topics:

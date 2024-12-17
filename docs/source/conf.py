@@ -15,7 +15,7 @@ sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 project = 'EMBRIO Multiscale Modeling E-Book'
 copyright = '2024, Hayden Fennell'
 author = 'Hayden Fennell'
-release = '0.1'
+release = '0.5'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -32,5 +32,5 @@ exclude_patterns = []
 
 html_theme = 'furo'
 html_logo = 'images/embrioLogoGrey.png'
-html_title = 'Multi-Scale Modeling E-Book'
+html_title = 'EMBRIO Multi-Scale Modeling E-Book'
 html_static_path = ['_static']
