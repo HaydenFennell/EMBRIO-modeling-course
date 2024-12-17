@@ -21,16 +21,15 @@ EMBRIO Multiscale Modeling E-Book
    module6_bestPractices
    module7_biologicalBackground
    module8_workedExamples
-   numericalSolutionPDE
-   equationsOfState
-   signalingPathwayDynamics
-   chemicalReactors
-   morphogenGradients
+   acetaldehydeMetabolism
    antibodyDetectionProject
    toxinProject
    circadianRhythmNotebookFinal
    chemotaxisAdaptation
-   acetaldehydeMetabolism
+   signalingPathwayDynamics
+   chemicalReactors
+   morphogenGradients
+   equationsOfState
    appendix_notebookCatalog
    
 Indices and tables
