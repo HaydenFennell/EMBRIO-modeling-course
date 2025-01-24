@@ -24,36 +24,40 @@ This site will follow a weekly update schedule. Updates will be pushed and the b
      - Delivery Date
    * - Module 0: Introduction to Scientific Computing
      - Python basics, loops, data handling
-     - December 7, 2024 (Edits/Cleanup)
+     - **Final:** Jan 31
    * - Module 1: Introduction to Biological Modeling
      - The Modeling Workflow, Identifying meaningful hypothesis, model abstraction
-     - December 13, 2024
+     - **Final:** Jan 31
    * - Module 2: Building Mathematical Models
      - ODE Modeling, PDE Solution approaches and finite difference method, common equation types
-     - December 16, 2024 
+     - **Final:** Jan 31 
    * - Module 3: Converting Math To Code
      - Executing equations in code, model specification and parameterization, common simulation methodologies
-     - December 20, 2024
+     - | **Draft**: Jan 31
+       | **Final**: Feb 7
    * - Module 4: Data Analysis
      - Managing and cleaning data, visualization, model fitting, statistical methods
-     - December 30, 2024 (Draft)
+     - | **Draft**: Feb 7
+       | **Final**: Feb 21 
    * - Module 5: Validity, Reliability, and Optimization
      - Validation vs verification, methods, pairing models with experiment, model optimization
-     - January, 2025 
+     - | **Draft**: Feb 14
+       | **Final**: Feb 28 
    * - Module 6: Best Practices
-     - 
-     - January, 2025 
+     - Suggested best practices for building successful models. What to anticipate during model setup, how to choose parameters from literature, common debugging strategies, and more.
+     - | **Draft**: Feb 21
+       | **Final**: Mar 7 
    * - Module 7: Biological background
      - Biological background information needed to do the worked examples, summary exercises, and projects
-     - February, 2025
+     - TBD
    * - Module 8: Worked Examples
      - 
-     - February, 2025
+     - **Draft:** Mar 14
    * - Module 9: Summary Exercises
      - 
-     - February, 2025
+     - **Draft:** Mar 21
    * - Module 10: Projects
      - 
-     - March, 2025
+     - **Draft:** Mar 28
      
-**Last Updated: 12/06/24**
+**Last Updated: 01/24/25**
