@@ -11,7 +11,7 @@ This section will introduce you to the basics of mathematical modeling in biolog
 
 One of the most common types of equations found in engineering and scientific modeling is the *differential equation*, a type of equation that models change by relating changing quantities within the system. Differential equations relate an unknown function to it's own derivatives. These equations can get quite complex, and we will not cover all of the nuances of solving these equations in this book. Please see our resources section if you would like to learn more about them on your own. However, it *is* critical for our purposes to discuss how to construct these sorts of equations, as well as how to use them computationally.
 
-Many of the systems that we will be looking at in this book can be modeled using a type of equation known as the ordinary differential equation (ODE). Ordinary differential equations or (ODE) are equations where the derivatives are taken with respect to only one variable. That is, there is only one independent variable. Partial differential equations (PDE), on the other hand, are equations that depend on partial derivatives of several variables. That is, there are several independent variables. 
+Many of the systems that we will be looking at in this book can be modeled using a type of equation known as the ordinary differential equation. Ordinary differential equations (ODE) are equations where the derivatives are taken with respect to only one variable. That is, there is only one independent variable. Partial differential equations (PDE), on the other hand, are equations that depend on partial derivatives of several variables. That is, there are several independent variables. 
 
 **Some examples of ordinary differential equations:**
 
@@ -23,17 +23,51 @@ Many of the systems that we will be looking at in this book can be modeled using
 * Transport equation: :math:`\dfrac{\partial C}{\partial t} + \dfrac{\partial J}{\partial x} = 0`
 * Diffusion reaction: :math:`\dfrac{\partial C}{\partial t} = D\dfrac{\partial C^2}{\partial x^2} + R_c`
 
-To the non-mathematician, these equations can seem very complicated at face value, and some of them certainly ca be! However, the process by which these equations are constructed is fairly intuitive once you've seen it a few times. So let's go over a couple of examples.
+To the non-mathematician, these equations can seem very complicated at face value, and some of them certainly can be! However, the process by which these equations are constructed is fairly intuitive once you've seen it a few times. So let's go over a couple of examples.
 
-Example: Newton's Law of Cooling
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Population Dynamics
+~~~~~~~~~~~~~~~~~~~
 
-**[Updating on 01/31/25]**
+As discussed above, differential equations are used to model the time rate of change of a quantity (or quantities) when the value of the quantity itself determines the rate of change. The time rate of change of a variable can be represented with the following notation:
 
-Example: Population Dynamics (Birth/Death) Model
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+:math:`\dfrac{dX}{dt} = \text{...}`
 
-**[Updating on 01/31/25]**
+Where :math:`X` is the quantity of interest and :math:`t` is time. The :math:`d` in front represents that this is a derivative of :math:`X` with respect to time (:math:`t`). Note that the value in the denominator does not necessarily have to be time. In many cases it will be, but the :math:`dx \text{/} dy` format can be used to represent the value of the derivative of any x with relation to any y. Setting up an equation this way essentially defines it as a differential equation. The right hand side of the equation will include :math:`X` somewhere. The easiest way to make sense of the idea here is to look at a specific example. 
+
+One of the most classic examples of the differential equation formula is population dynamics modeling. In population growth, for example, the rate of growth of the population depends on the number of people (or other reproducing entities) at any given time. If the population is small, the rate of growth will be small. If the population is large, the rate of growth will be large. Therefore, if the population starts small and becomes large, the rate of change will increase with the population. The rate of change at a given time is dependent on the population *at that time*. Let's set up an equation to represent this. Like our general example above, our time rate of change of population (:math:`P`) can be defined as:
+
+:math:`\dfrac{dP}{dt} = \text{...}`
+
+In many simple population models, we consider the growth rate of the population as proportional to the population itself by some constant value (which usually must be determined through observational and/or experimental data). With the addition of this "rate constant," our equation becomes:
+
+:math:`\dfrac{dX}{dt} = kP`
+
+where :math:`P` is the population and :math:`k` represents the constant growth rate (i.e., constant of proportionality). This is a very simple model, but the important thing to remember is that as the population increases, so does the time rate of change of the population. So the relationship is ultimately non-linear. To find the population at a given time, this equation can be solved analytically by using known values (from measurement data) to find the value of :math:`k`. The population can then be predicted at a chosen time using the complete equation. However, the purpose of this course is to teach you how to use computer models to work with these equations as differential models (i.e., without always having to solve them directly). The next several sections of this module will introduce a method for using differential equations without having to solve for their exact forms first. But before we move on, let's look at one more quick example.
+
+Newton's Law of Cooling
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Newton's Law of Cooling, as originally proposed by Sir Issac Newton in his Scala Graduum Caloris, states that the rate of cooling (temperature decrease) of a warmed object is proportional to the difference between the temperature of the object and the temperature of the surrounding environment. In other words, as the object cools, the time rate of change of the object's temperature slows. Like our population example, we'll start with our time rate of change of the cooling object. 
+
+:math:`\dfrac{dT}{dt} = \text{...}`
+
+Where :math:`T` is the temperature of the cooling object. For the right hand side, we use a similar approach to the population example. We have a constant of proportionality (rate constant), :math:`k`, and our difference in temperature :math:`(T-T_\text{env})`.
+
+:math:`\dfrac{dX}{dt} = k(T-T_\text{env})`
+
+Since we are using this equation to represent cooling (i.e., the object is warmer than the surroundings), we need our rate constant to reflect a decrasing time rate of change of temperature. One way to do this by simply remembering to use a negative value for the rate constant. However, to better represent the observed behavior in the equation itself, we can simply make :math:`k` negative in the general form.
+
+:math:`\dfrac{dX}{dt} = -k(T-T_\text{env})`
+
+This way, we can maintain the convention of rate constants being positive and we (or anyone else using the equation) don't have to remember that k is negative. Note that with this formulation, the equation still works as expected if the object is cooler than the environment, as :math:`T-T_\text{env}` will result in a negative value, resulting in a positive when multiplied by :math:`k`, thus representing increasing temperature change.
+
+This equation can also be solved analytically to predict the temperature at a certain time. For a walkthrough of how to do that, please reference these two videos: `How to Solve <https://youtu.be/IICR-w1jYcA?si=2YBiCyh7aku9qMXz>`_ and `Example application <https://youtu.be/jH5qflAe3C8?si=ZgLvwAxIoE18Ki_7>`_.
+
+These are two fairly simple equations of first-order differential equations, but hopefully it gives some insight into how these types of equation models are constructed. Next, let's look at one more example of a second order differential equation and how it is derived. 
+
+**[Mechanical Vibration example coming 02/24/25]**
+
+Again, we are not going to spend much time on the technicalities of *solving* differential equations in this module. While knowing how to solve these equations can be useful, many can be very difficult and time consuming to solve by hand. Luckily, there are numerical methods that can be used to circumvent the exact solutions of many differential equations and allow them to be applied in their differentiated state. Module 3 will show you how to use the finite difference method in combination with computational tools to approximate solutions to very complex systems of equations that either do not have analytical solutions or are too complicated to solve by hand. Next, we will discuss a bit about partial differential equations, followed by an introduction of the Finite Difference Method for approximating solutions to unsolved differential equations.
 
 2.2: Partial Differential Equations
 -----------------------------------

@@ -409,7 +409,71 @@ With the details listed in the previous section, we can construct a simple visua
    :align: center
    :alt: model elements diagram
 
-Next, we should start to think about our overall model structure and make some initial mental predictions about how it might behave during a simulation run. In our model, cells of different types have a cell-type-dependent contact energy per unit surface area. The pattern rearranges to minimize the total contact energy (maximize the adhesion between cells). 
+We can further specify our objects in the simulation by assigning properties to them that we need to track throughout our simulation (i.e., the properties that impact the behavior of the system). We can also define some preliminary behaviors and interactions of objects within the system.
+
++---------------+-----------------+---------------+
+| Object        | Properties      | Property Type |
++===============+=================+===============+
+| Environment   | X-extent        | Parameter     |
+|               +-----------------+---------------+
+|               | Y-extent        | Parameter     |
++---------------+-----------------+---------------+
+| Cells         | Position        | Variable      |
+|               +-----------------+---------------+
+|               | Mass            | Parameter     |
+|               +-----------------+---------------+
+|               | Volume          | Parameter     |
+|               +-----------------+---------------+
+|               | Surface Tension | Parameter     |
++---------------+-----------------+---------------+
+| Medium        | Volume          | Variable      |
++---------------+-----------------+---------------+
+
++--------+----------+
+| Object | Type     |
++========+==========+
+| Cell   | Endoderm |
+|        +----------+
+|        | Mesoderm |
++--------+----------+
+| Medium | Medium   |
++--------+----------+
+
++----------+---------------------+-----------------+
+| Behavior | Participant Objects | Properties      |
++==========+=====================+=================+
+| Movement | Cells               | Random movement |
++----------+---------------------+-----------------+
+
++----------------------+---------------------------+-------------------+---------------+
+| Interaction          | Participant Objects       | Properties        | Property Type |
++======================+===========================+===================+===============+
+| Separation           | Cell 1                    | Volume exclusion  | Variable      |
+|                      +---------------------------+-------------------+---------------+
+|                      | Cell 2 adjacent to Cell 1 |                   |               |
++----------------------+---------------------------+-------------------+---------------+
+| Cell-Cell Adhesion   | Cell 1                    | Adhesion Strength | Variable      |
+|                      +---------------------------+-------------------+---------------+
+|                      | Cell 2 adjacent to Cell 1 |                   |               |
++----------------------+---------------------------+-------------------+---------------+
+| Cell-Medium Adhesion | Cell 1                    | Adhesion Strength | Variable      |
+|                      +---------------------------+-------------------+---------------+
+|                      | External Medium           |                   |               |
++----------------------+---------------------------+-------------------+---------------+
+
++-------------+----------+-----------+-------------+
+| Object      | Property | Position  | Arrangement |
++=============+==========+===========+=============+
+| Environment | X-extent | –         |             |
+|             +----------+-----------+-------------+
+|             | Y-extent | –         |             |
++-------------+----------+-----------+-------------+
+| Endoderm    | number   | Cluster 1 | Random      |
++-------------+----------+-----------+-------------+
+| Ectoderm    | number   | Cluster 1 | Random      |
++-------------+----------+-----------+-------------+
+
+Next, we should start to think about our overall model structure and make some initial mental predictions about how it might behave during a simulation run. In our model, cells of different types have a cell-type-dependent contact energy per unit surface area. The pattern rearranges to minimize the total contact energy (maximize the adhesion between cells).
 
 **Think about the following as we continue to the next section:** If you change the contact energies between cells, how should the final configuration of the cells in the experiment change?
 
