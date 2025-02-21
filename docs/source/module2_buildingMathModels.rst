@@ -40,7 +40,7 @@ One of the most classic examples of the differential equation formula is populat
 
 In many simple population models, we consider the growth rate of the population as proportional to the population itself by some constant value (which usually must be determined through observational and/or experimental data). With the addition of this "rate constant," our equation becomes:
 
-:math:`\dfrac{dX}{dt} = kP`
+:math:`\dfrac{dP}{dt} = kP`
 
 where :math:`P` is the population and :math:`k` represents the constant growth rate (i.e., constant of proportionality). This is a very simple model, but the important thing to remember is that as the population increases, so does the time rate of change of the population. So the relationship is ultimately non-linear. To find the population at a given time, this equation can be solved analytically by using known values (from measurement data) to find the value of :math:`k`. The population can then be predicted at a chosen time using the complete equation. However, the purpose of this course is to teach you how to use computer models to work with these equations as differential models (i.e., without always having to solve them directly). The next several sections of this module will introduce a method for using differential equations without having to solve for their exact forms first. But before we move on, let's look at one more quick example.
 
@@ -53,11 +53,11 @@ Newton's Law of Cooling, as originally proposed by Sir Issac Newton in his Scala
 
 Where :math:`T` is the temperature of the cooling object. For the right hand side, we use a similar approach to the population example. We have a constant of proportionality (rate constant), :math:`k`, and our difference in temperature :math:`(T-T_\text{env})`.
 
-:math:`\dfrac{dX}{dt} = k(T-T_\text{env})`
+:math:`\dfrac{dT}{dt} = k(T-T_\text{env})`
 
 Since we are using this equation to represent cooling (i.e., the object is warmer than the surroundings), we need our rate constant to reflect a decrasing time rate of change of temperature. One way to do this by simply remembering to use a negative value for the rate constant. However, to better represent the observed behavior in the equation itself, we can simply make :math:`k` negative in the general form.
 
-:math:`\dfrac{dX}{dt} = -k(T-T_\text{env})`
+:math:`\dfrac{dT}{dt} = -k(T-T_\text{env})`
 
 This way, we can maintain the convention of rate constants being positive and we (or anyone else using the equation) don't have to remember that k is negative. Note that with this formulation, the equation still works as expected if the object is cooler than the environment, as :math:`T-T_\text{env}` will result in a negative value, resulting in a positive when multiplied by :math:`k`, thus representing increasing temperature change.
 
