@@ -33,31 +33,31 @@ This site will follow a weekly update schedule. Updates will be pushed and the b
      - **Final:** Jan 31 
    * - Module 3: Converting Math To Code
      - Executing equations in code, model specification and parameterization, common simulation methodologies
-     - | **Draft**: Jan 31
-       | **Final**: Feb 7
+     - | **Draft**: Apr 18
+       | **Final**: Apr 25
    * - Module 4: Data Analysis
      - Managing and cleaning data, visualization, model fitting, statistical methods
-     - | **Draft**: Feb 7
-       | **Final**: Feb 21 
+     - | **Draft**: Apr 21
+       | **Final**: Apr 25 
    * - Module 5: Validity, Reliability, and Optimization
      - Validation vs verification, methods, pairing models with experiment, model optimization
-     - | **Draft**: Feb 14
-       | **Final**: Feb 28 
+     - | **Draft**: Apr 28
+       | **Final**: May 02 
    * - Module 6: Best Practices
      - Suggested best practices for building successful models. What to anticipate during model setup, how to choose parameters from literature, common debugging strategies, and more.
-     - | **Draft**: Feb 21
-       | **Final**: Mar 7 
+     - | **Draft**: May 09
+       | **Final**: May 16 
    * - Module 7: Biological background
      - Biological background information needed to do the worked examples, summary exercises, and projects
      - TBD
    * - Module 8: Worked Examples
      - 
-     - **Draft:** Mar 14
+     - May 2025
    * - Module 9: Summary Exercises
      - 
-     - **Draft:** Mar 21
+     - June 2025
    * - Module 10: Projects
      - 
-     - **Draft:** Mar 28
+     - June 2025
      
-**Last Updated: 01/24/25**
+**Last Updated: 04/18/25**
