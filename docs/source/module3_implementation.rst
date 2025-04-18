@@ -134,12 +134,12 @@ Note that our model currently predicts the overall trend of our experimental dat
    :align: center
    :width: 60%
 
-In order for our model to make more reliable predictions, we want to adjust the parameter values :math:`{k_j}` to minimize the difference between predicted and observed values. Since differences vary from point to point, we need to decide what metric to use to determine the total difference. 
+In order for our model to make more reliable predictions, we want to adjust the parameter values :math:`\{k_j\}` to minimize the difference between predicted and observed values. Since differences vary from point to point, we need to decide what metric to use to determine the total difference. 
 
-* To start, we will call our data points :math:`(x_i,y_i)` and our model :math:`f(x;{k_j})`
-* For a given value of :math:`k_1` and time :math:`x_i`, :math:`f` returns the predicted value :math:`y_i^m=f(x_i;{k_j})`
-* The difference between each data point and the prediction is: :math:`e_i=y_i−f(x_i;{k_j})`
-* An **objective function** or cost function :math:`g{e_i}` aggregates all such differences. Note that if :math:`g{e_i}` just summed the differences, positive and negative differences would cancel each other out.
+* To start, we will call our data points :math:`(x_i,y_i)` and our model :math:`f(x;\{k_j\})`
+* For a given value of :math:`k_1` and time :math:`x_i`, :math:`f` returns the predicted value :math:`y_i^m=f(x_i;\{k_j\})`
+* The difference between each data point and the prediction is: :math:`e_i=y_i−f(x_i;\{k_j\})`
+* An **objective function** or cost function :math:`g\{e_i\}` aggregates all such differences. Note that if :math:`g\{e_i\}` just summed the differences, positive and negative differences would cancel each other out.
 
 The most common objective function is chi-square, the sum of squared differences.
 
