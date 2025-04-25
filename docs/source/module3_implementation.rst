@@ -28,6 +28,7 @@ With this form, we can write a short Python program to run a finite difference e
 When run with the parameters listed above, the output should look like this:
 
 .. image:: images/module3_files/populationGrowth1_output1.png
+   :align: center
 
 You can see that the output does exhibit the exponential growth that we expected from the model. As the population increases, there are more organisms to reproduce, hence the increasing rate. However, even though the behavior of the function is what we predicted, we can't be sure if these values are realistic without some sort of external reference. For this example, we have the luxury of a relatively straightfoward solved version of the equation to compare the estimated version against. As a reminder, our differential equation for simple population growth has the solution set:
 
@@ -42,20 +43,25 @@ Using the exact form calculated from our hypothetical bacterial colony, we can p
 .. literalinclude:: code/module3/populationGrowth2.py
 
 .. image:: images/module3_files/populationGrowth2_output1.png
+   :align: center
 
 When compared to our solved values, we can see that our estimate is not exactly what we expect from the model. Our estimated values skew low, although they exhibit the same general behavior. Remember that our finite difference estimate is constructed by calculating the instantaneous slope at each point in the plot and projecting out the next point, rather than plotting a collection of solved points. In other words, each point in the estimated curve is calculated based on the previous value, so small inaccuracies in the model become amplified over time. In this case, the end result is a signficantly lower final value after the elapsed time of five hours.
 
 Several factors can affect the accuracy of our estimates, but one of the most common ways to improve the accuracy of our models is to shorten the time step (:math:`dt`). In general, smaller time steps will increase the accuracy of any simulation (assuming that your math is correct, of course). Right now, our time step is pretty large at 0.5 hours per step. We are effectively only estimating our change in value ten times over the course of five hours. So let's test some different time steps and see how it changes the simulation. First, we can start by decreasing :math:`dt` to 0.1, resulting in 50 total steps.
 
 .. image:: images/module3_files/populationGrowth2_output2.png
+   :align: center
 
 Notice that as we decrease our time step, the curves begin to align. Also note that our final value for the solved data set does not change, but the final value for our estimates curve does. **[EDITOR'S NOTE: Bug in code logic is causing images not to reflect this statement; will be fixed by next update.]** We can repeat this by decreasing the time step value even further to show that our estimate increasingly reflects the solved curve at smaller values of :math:`dt`.
 
 .. image:: images/module3_files/populationGrowth2_output3.png
+   :align: center
 
 .. image:: images/module3_files/populationGrowth2_output4.png
+   :align: center
 
 .. image:: images/module3_files/populationGrowth2_output5.png
+   :align: center
 
 We also observe that as our :math:`dt` gets smaller, the discrepency in final estimated value also becomes much smaller. Eventually our estimated and solved curves are virtually identical.
 
@@ -71,8 +77,8 @@ This general format of program is how we will model many phenomenon using comput
 
 In the previous section, we briefly discussed how important it is to start with good initial values for your problem. However, one of the ever-present challenges of computational modeling is determining what "good" starting values are. This process of identifying which values to use to initialize your simulation is known as "parameterization." This section will introduce some methods for selecting parameters, some approaches to optimizing your chosen parameters, and some discussion of fitting parameters to existing data.
 
-3.2.1: Parameterization
-~~~~~~~~~~~~~~~~~~~~~~~
+3.2.1: Selecting Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A model has a structure (see Section 2.2) and a set of parameters. It's predictive output (and usefulness) depends on both. For a given model structure, the behavior of a biochemical or regulatory networks is determined by the value of its parameters. We’ve seen how these parameters determine the quantitative/qualitative behavior of the model. Next, we need to start asking how "good" our model is when compared to real-world data? Does it adequately describe known behavior of the system? Can the model be used to make predictions that align with real-world observations?
 
@@ -89,20 +95,10 @@ Parameter Fitting is used to answer questions about the adequacy of our model:
 
 Classical optimization assumes we know the model structure but don’t know the parameters, but in biology we often don’t know the model structure. In many cases, we may need to use ensembles of models. For now, we will just focus on single models with single parameter sets.
 
-3.2.2: Selecting Parameters
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**[Updating: 04/21/25]**
-
-3.2.3: Assessing "Goodness"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**[Updating: 04/21/25]**
-
-3.2.4: Parameter Fitting & Optimization
+3.2.2: Parameter Fitting & Optimization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For a particular model structure, we want to know which parameters values make the model predictions agree best with observed data. For this best set of parameters, how well does the model fit the data? To do this fitting, we need: model, data, decision about what parameters will be varied, function that quantifies the difference between data and model prediction, a max tolerance for the distance between model prediction and data.
+For a particular model structure, we want to know which parameter values make the model predictions agree best with observed data. For this best set of parameters, how well does the model fit the data? To do this fitting, we need: model, data, decision about what parameters will be varied, function that quantifies the difference between data and model prediction, a max tolerance for the distance between model prediction and data.
 
 .. figure:: images/module3_files/Sauro_p170.png
    
@@ -124,13 +120,13 @@ Let's work through a simple example. Suppose we have data on the concentration o
 
 For each value of :math:`k_1`, the model predicts the concentration of :math:`S` at each time.
 
-.. image:: images/module3_files/optimizationExample2.png
+.. image:: images/module3_files/optimizationExample2.jpg
    :align: center
    :width: 60%
 
 Note that our model currently predicts the overall trend of our experimental data, but does not match the observed behavior exactly. Each experimental point lies some distance from the model predictions. These distances are referred to as *residuals* (:math:`e_i`), which can be calculated for each point. Keep in mind that we often have multiple parameters, each with their own residual values.
 
-.. image:: images/module3_files/optimizationExample3.png
+.. image:: images/module3_files/optimizationExample3.jpg
    :align: center
    :width: 60%
 
@@ -145,9 +141,81 @@ The most common objective function is chi-square, the sum of squared differences
 
 .. image:: images/module3_files/chiSquare.png
    :align: center
-   :width: 50%
+   :width: 45%
+
+Many objective functions are possible for different types of data structures (e.g., different exponents, taking the :math:`log(y_i)`, combining multiple functions with different weights, etc.).
+
+In some cases, :math:`y_i` could be a vector (e.g., concentrations of species A, B, C and D) in which case, we need to decide how to combine the residuals for each species. Appropriate weighting is essential if they differ greatly in magnitude. We may need different functional forms for each if the structure of variation between variables differs significantly.
+
+3.2.3: Optimization Algorithms
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Although there are any number of objective functions to use in your optimization, the optimization process will follow the same general structure:
+
+#. Make an initial guess of parameters :math:`\{k_j^0\}`
+#. Compute the value of the objective function :math:`g(\{e_j\}\{k_j\})`
+#. Adjust the parameter values to reduce :math:`g(\{e_j\}\{k_j\})` in the next iteration
+#. Repeat until :math:`g(\{e_j\}\{k_j\})` cannot be reduced any further
+
+A couple of key questions arise from this process: (1) how do we make our initial guess at the parameters, (2) how exactly do we "adjust" our parameter values between iterations and (3) how do we determine when the error "can't" be reduced any further? This section will detail the top-level overview of several different methods for minimizing the error in a parameter set.
+
+Global vs Local Minima
+++++++++++++++++++++++
+
+One of the common pitfalls of parameter optimization is the tendency for optimization algorithms to get "stuck" in local minima in the parameter space and falesly identify them as the global minimum. **[EDITOR NOTE: Expand on this point]**
+
+Remember that :math:`g(\{e_i\})` is a scalar function of a parameter space with dimensionality of the number of parameters. For two parameters :math:`g(\{e_j\}\{k_j\})` describes a surface, as shown below. 
+
+.. image:: images/module3_files/optimizationSurface.png
+   :align: center
+
+Valleys represent low values of :math:`f(e_i)`, while hills represent high values. The :math:`\{k_j\}` with the lowest possible value of :math:`g(\{e_j\}\{k_j\})` is the global minimum, other :math:`\{k_j\}` with low values of :math:`g(\{e_j\}\{k_j\})` define local minima.
+
+Getting optimizers to work well requires thought about choice of parameters, initial guesses, and allowed ranges. Haphazardly selected parameters can cause optimization packages to take a very long time or even to fail to return useful results. However, for simple simulations, you can usually run the optimizers naively at first to get a sense of what the specific issues are with initialization of the optimizer that you're using.
+
+Gradient Descent
+++++++++++++++++
+
+One of the simplest examples of parameter set optimization is the gradient descent algorithm. To start, we let :math:`\chi^2=f(p)`, and we select an initial starting point of :math:`p_1` is chosen.
+
+.. image:: images/module3_files/gradientDescent1.jpg
+   :align: center
+   :width: 60%
+
+Then the slope (or gradient) is calculated at that point: :math:`\nabla f=\dfrac{df}{dp}`
+
+.. image:: images/module3_files/gradientDescent2.jpg
+   :align: center
+   :width: 60%
+
+Next, another point is chosen down the gradient using a step size of :math:`\alpha\nabla f`:
+
+.. math:: p_{n+1}=p_n+\alpha\nabla f
+
+.. image:: images/module3_files/gradientDescent3.jpg
+   :align: center
+   :width: 60%
+
+Finally, this process is repeated until the calculated gradient is below some target threshold (i.e., the slope of the line is sufficiently close to zero, indicating that we have reached the minimum).
+
+.. image:: images/module3_files/gradientDescent4.jpg
+   :align: center
+   :width: 60%
+
+
+
+3.2.4: Assessing "Goodness"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+i.e., how do we know when our parameter selections are good enough for our purposes?
+
+**[Updating: 04/30/25]**
 
 3.3: Common Simulation Methodologies (And Their Applications)
 -------------------------------------------------------------
 
 This section will introduce several different approaches to running simulations and where they are most appropriately applied. This list is not meant to be exhaustive; just to illustrate the various ways that computational methods can be used to represent different types of real-world phenomena.
+
+* Mechanistic vs. statistical models
+* Monte Carlo methodologies
+* Lattice models, center models, vertex models, etc.

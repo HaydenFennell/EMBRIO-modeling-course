@@ -4,17 +4,17 @@ Module 4: Data Analysis
 4.1: Managing and Preparing Data
 --------------------------------
 
-[Coming soon]
+[Content Needed]
 
 4.2: Data Visualization
 -----------------------
 
-[Coming soon]
+[In Progress: Update Scheduled 04/30/25]
 
-4.3: Model Fitting
-------------------
+4.3: Model Fitting & Tuning: Examples
+-------------------------------------
 
-[Coming soon]
+[In Progress: Update Scheduled 04/30/25]
 
 4.4: Statistical Methods (?)
 ----------------------------
