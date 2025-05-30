@@ -7,7 +7,7 @@ A simulation, then, is a construct that allows you to run a model with given inp
 
 For the purposes of this module, all of our simulations will be implemented directly in Python code. We will discuss some other more complex and more purpose-built simulation frameworks in later modules.
 
-As we discussed in Module 1, the most common method of running a simulation is through iterative code, or the loops of a program as introduced in Section 0.3. By translating our equations into computer code and nesting them into an algorithm that represents the model, we can "run" the model by iteratively executing the code. In almost all cases, the variable being "iterated over" is time, as most of our scientific questions will be centered around how a system behaves over time. 
+As we discussed in Module 1, the most common method of running a simulation is through iterative code execution, or the loops of a program as introduced in Section 0.3. By translating our equations into computer code and nesting them into an algorithm that represents the model, we can "run" the model by iteratively executing the code. In almost all cases, the variable being "iterated over" is time, as most of our scientific questions will be centered around how a system behaves over time. 
 
 3.1: Executing Equations (Running Models)
 -----------------------------------------
@@ -52,7 +52,7 @@ Several factors can affect the accuracy of our estimates, but one of the most co
 .. image:: images/module3_files/populationGrowth2_output2.png
    :align: center
 
-Notice that as we decrease our time step, the curves begin to align. Also note that our final value for the solved data set does not change, but the final value for our estimates curve does. **[EDITOR'S NOTE: Bug in code logic is causing images not to reflect this statement; will be fixed by next update.]** We can repeat this by decreasing the time step value even further to show that our estimate increasingly reflects the solved curve at smaller values of :math:`dt`.
+Notice that as we decrease our time step, the curves begin to align. Also note that our final value for the solved data set does not change, but the final value for our estimates curve does. **[EDITOR NOTE: Bug/bad logic in code logic is causing images not to reflect this statement; will be fixed by next update.]** We can repeat this by decreasing the time step value even further to show that our estimate increasingly reflects the solved curve at smaller values of :math:`dt`.
 
 .. image:: images/module3_files/populationGrowth2_output3.png
    :align: center
@@ -89,9 +89,11 @@ Parameter Fitting is used to answer questions about the adequacy of our model:
 * How much confidence should we have in our estimated parameter values (uncertainty quantification)?
 * How good is the model for making predictions (validity)?
 
-"Fitting" a model means adjusting parameters until its behavior matches(?) known experimental data. A model predicts a set of metrics based on experimentally measurable variables of behaviors from a set of experimentally controllable (or naturally varying, or inferable) parameters and a model structure
+"Fitting" a model means adjusting parameters until its behavior matches known experimental data as closely as possible. A model predicts a set of metrics based on experimentally measurable variables of behaviors from a set of experimentally controllable (or naturally varying, or inferable) parameters and a model structure.
 
 .. image:: images/module3_files/modelFramework.png
+
+If our model inputs and outputs closely match example data from real-world observations, we can generally conclude that the model accurately represents reality for these conditions. An important thing to keep in mind, however, is that accuracy of a model under one set of conditions does not necessarily guarantee accuracy under other sets of conditions, especially if the differences are large. We will discuss this concept of the "bounds" of a model's accuracy more in Module 5 when we discuss validity. For now, we want to focus on the process of finding parameters that provide a good fit with known results.
 
 Classical optimization assumes we know the model structure but don’t know the parameters, but in biology we often don’t know the model structure. In many cases, we may need to use ensembles of models. For now, we will just focus on single models with single parameter sets.
 
@@ -162,14 +164,19 @@ A couple of key questions arise from this process: (1) how do we make our initia
 Global vs Local Minima
 ++++++++++++++++++++++
 
-One of the common pitfalls of parameter optimization is the tendency for optimization algorithms to get "stuck" in local minima in the parameter space and falesly identify them as the global minimum. **[EDITOR NOTE: Expand on this point]**
-
-Remember that :math:`g(\{e_i\})` is a scalar function of a parameter space with dimensionality of the number of parameters. For two parameters :math:`g(\{e_j\}\{k_j\})` describes a surface, as shown below. 
+One of the common pitfalls of parameter optimization is the tendency for optimization algorithms to get "stuck" in local minima in the parameter space and falesly identify them as the global minimum. Remember that :math:`g(\{e_i\})` is a scalar function of a parameter space with dimensionality of the number of parameters. For two parameters :math:`g(\{e_j\}\{k_j\})` describes a surface, as shown below. 
 
 .. image:: images/module3_files/optimizationSurface.png
    :align: center
 
 Valleys represent low values of :math:`f(e_i)`, while hills represent high values. The :math:`\{k_j\}` with the lowest possible value of :math:`g(\{e_j\}\{k_j\})` is the global minimum, other :math:`\{k_j\}` with low values of :math:`g(\{e_j\}\{k_j\})` define local minima.
+
+In addition to the local minimum pitfall, there are several other "optimization pathologies" to keep in mind when trying to optimize your parameter sets. 
+
+.. image:: images/module3_files/optimizationPathologies.png
+   :align: center
+
+In Figure #(a) we see the ideal case, where the optimization proceeds smoothly into the true global minimum. This is what we want to happen, but in complex systems of multiple/many variables, this is rare and should generally be regarded with suspiscion if it seems to occur too early in the process. Figure #(b) shows our local minimum problem discussed above. Here, the optimizer algorithm settles into a minimum "deep enough" to prevent it from exploring other areas of the parameter space. BEcause the optimizer operates on individual minimization steps and is ignorant of the space as a whole, it cannot "see" the existence of a nearby lower minimum. While it has *a* found a minimum, it has not successfully found *the* system minimum. Figure #(c) illustrates a problem known as "neutral area," in which the optimizer gets stuck moving back and forth between values similar enough to not register as minimization or maximization. Minima can be missed this way if the optimizer "times out" before reaching an area of descent. Figure #(d) depicts the "close minima" problem, in which silimarly valued minima are close enough together that it becomes difficult to determine which minimum is the true global minimum. A symptom of this issue may manifest as the optimizer returning different paramater values across multiple runs, since each close minimum is treated as a viable solution. Finally, Figure #(e) shows the "overshoot" problem, in which the step size of the optimization calculations is larger than the minimum's width. In this case, the optimizer bypasses the potential global minimum and continues along a non-minimized path. This problem can be combatted with smaller step increments.
 
 Getting optimizers to work well requires thought about choice of parameters, initial guesses, and allowed ranges. Haphazardly selected parameters can cause optimization packages to take a very long time or even to fail to return useful results. However, for simple simulations, you can usually run the optimizers naively at first to get a sense of what the specific issues are with initialization of the optimizer that you're using.
 
@@ -202,7 +209,48 @@ Finally, this process is repeated until the calculated gradient is below some ta
    :align: center
    :width: 60%
 
+There are some other common optimization methods, which we will discuss here briefly.
 
+Levenberg-Marquardt
++++++++++++++++++++
+
+The Levenberg-Marquardt optimization algorithm **[EDITOR NOTE: ADD CITATION]** is similar to the gradient descent method, but slightly more sophisticated. It follows the same procedure as the gradient method when the curvature of the function is steep (i.e., the slope is still high and therefore we are not yet near the minimum). 
+
+However, when we pass a certain steepness threshold closer to the minima, we switch to a Newton-Gauss approximation to triangulate on the minimum faster.
+
+* When slope is steep: :math:`p_{n+1}=p_n-\alpha\nabla f`
+* When slope is minor: :math:`p_{n+1}=p_n-\nabla f H^{-1}`
+
+.. image:: images/module3_files/levenbergMarquardt.jpg
+   :align: center
+   :width: 60%
+
+This method, although more efficient than simple gradient descent, requires the calculation of derivatives at each step. This can become computationally expensive, particularly when optimizing large parameter sets.
+
+Simplex Method
+++++++++++++++
+
+The Simplex method uses geometric approximation to find the minimum. 
+
+Simulated Annealing
++++++++++++++++++++
+
+In contrast to the methods discussed so far, simulated annealing introduces probabilistic methodologies into the optimization process. In simulated annealing, we begin with an initial state of the system, and the energy (or other specified value) is calculated. A random second state is then selected, and it's energy is calculated. If the energy is lower, the state is accepted as the new "running minimum." However, if the energy is higher, the state is accepted with some probability. This semi-random acceptance of higher energy states allows the optimizer to avoid getting stuck in local minima, as shown below.
+
+.. image:: images/module3_files/simulatedAnnealing.png
+   :align: center
+
+To reiterate:
+
+* We start at an initial state of the system: :math:`\varepsilon_i = \chi^2_i`
+* Another state :math:`\varepsilon_{i+1}` is randomly selected. The new state is accepted with a probability: :math:`P(\varepsilon_{i+1})= \text{min}(1,e^\frac{\varepsilon_𝑖−\varepsilon}{T})`, where T is temperature.
+* If :math:`\varepsilon_{i+1} < \varepsilon_i` the probability is 1 and the new state is accepted
+* If :math:`\varepsilon_{i+1} > \varepsilon_i` the probability is less than 1 but greater than 0
+* When T is big, :math:`\frac{\varepsilon_𝑖−\varepsilon}{T} \approx 0` and the probability :math:`\approx 1`
+
+Accepting bigger 𝜖_(𝑖+1) (going uphill) allows the algorithm to "jump" out of local minima and find the global minimum for annealing algorithms, the Temperature decreases according to an annealing schedule. In other words, the likely hood of large jumps uphill decreases the longer the algorithm searches the parameter space. Otherwise, the annealing process could simply jump around the parameter space forever, especially if the minima of your system are not especially steep. Once the optimization process has finished, the current running minimum is reported as the global minimum.
+
+This process of randomly selecting parameter states and checking to see if it is "lower" than the running lowest value helps to avoid many of the optimization problems discussed above. However, since the optimizer is picking random states rather than following gradient calculations, annealing methods inherently often report approximations of the global minimum rather than the true local minimum state. Annealing can get very close, but the likelihood of it selecting the true global minimum value is as random as selecting any other system state. It is critical to be aware of this limitation, but for most practical purposes, the estimates from a well-tuned probabilistic algorithm are sufficient.
 
 3.2.4: Assessing "Goodness"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
