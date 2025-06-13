@@ -525,4 +525,4 @@ An important detail to note here is that in our model, the "preferred" configura
 
 This section will include several model conceptualization exercises. 
 
-Content in progress. Update scheduled for Version 1.0 release.
+**[Content in progress. Update scheduled for Version 1.0 release, June 27, 2025.]**

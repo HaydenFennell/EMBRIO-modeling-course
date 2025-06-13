@@ -157,14 +157,14 @@ the ``color`` keyword argument.
 4.2: Statistical Analysis Methods (?)
 -------------------------------------
 
-[In Progress: Update Scheduled 06/06/25]
+[In Progress: To be included in Ver.1.0 update on 06/27/25]
 
 4.3: Model Fitting & Tuning: Examples
 -------------------------------------
 
-[In Progress: Update Scheduled 06/09/25]
+[In Progress: To be included in Ver.1.0 update on 06/27/25]
 
 4.4: Preparing Data for Publication & Sharing
 ---------------------------------------------
 
-[In Progress: Update Scheduled 06/06/25]
+[In Progress: To be included in Ver.1.0 update on 06/27/25]

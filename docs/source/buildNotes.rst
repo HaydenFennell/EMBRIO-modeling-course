@@ -24,40 +24,36 @@ This site will follow a weekly update schedule. Updates will be pushed and the b
      - Delivery Date
    * - Module 0: Introduction to Scientific Computing
      - Python basics, loops, data handling
-     - **Final:** Jan 31
+     - **Editing**
    * - Module 1: Introduction to Biological Modeling
      - The Modeling Workflow, Identifying meaningful hypothesis, model abstraction
-     - **Final:** Jan 31
+     - **Editing**
    * - Module 2: Building Mathematical Models
      - ODE Modeling, PDE Solution approaches and finite difference method, common equation types
-     - **Final:** Jan 31 
+     - **Editing** 
    * - Module 3: Converting Math To Code
      - Executing equations in code, model specification and parameterization, common simulation methodologies
-     - | **Draft**: Apr 18
-       | **Final**: Apr 30
+     - **Revising**
    * - Module 4: Data Analysis
      - Managing and cleaning data, visualization, model fitting, statistical methods
-     - | **Draft**: Apr 25
-       | **Final**: Apr 30 
+     - **Finishing Content** 
    * - Module 5: Validity, Reliability, and Optimization
      - Validation vs verification, methods, pairing models with experiment, model optimization
-     - | **Draft**: Apr 30
-       | **Final**: May 02 
+     - **Finishing Content** 
    * - Module 6: Best Practices
      - Suggested best practices for building successful models. What to anticipate during model setup, how to choose parameters from literature, common debugging strategies, and more.
-     - | **Draft**: May 16
-       | **Final**: May 23 
+     - **Draft:** Aug 2025
    * - Module 7: Biological background
      - Biological background information needed to do the worked examples, summary exercises, and projects
-     - TBD
+     - **Draft: **Aug 2025
    * - Module 8: Worked Examples
      - 
-     - May 2025
+     - Aug 2025
    * - Module 9: Summary Exercises
      - 
-     - June 2025
+     - **Draft:** Aug 2025
    * - Module 10: Projects
      - 
-     - June 2025
+     - **Draft:** Aug 2025
      
-**Last Updated: 04/25/25**
+**Last Updated: 06/12/25**

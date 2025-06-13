@@ -65,7 +65,7 @@ This equation can also be solved analytically to predict the temperature at a ce
 
 These are two fairly simple equations of first-order differential equations, but hopefully it gives some insight into how these types of equation models are constructed. Next, let's look at one more example of a second order differential equation and how it is derived. 
 
-**[Mechanical Vibration example coming 04/30/25]**
+**[Mechanical Vibration example to be included in 06/20/25 update]**
 
 Again, we are not going to spend much time on the technicalities of *solving* differential equations in this module. While knowing how to solve these equations can be useful, many can be very difficult and time consuming to solve by hand. Luckily, there are numerical methods that can be used to circumvent the exact solutions of many differential equations and allow them to be applied in their differentiated state. Module 3 will show you how to use the finite difference method in combination with computational tools to approximate solutions to very complex systems of equations that either do not have analytical solutions or are too complicated to solve by hand. Next, we will discuss a bit about partial differential equations, followed by an introduction of the Finite Difference Method for approximating solutions to unsolved differential equations.
 

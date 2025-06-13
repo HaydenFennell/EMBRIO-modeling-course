@@ -17,19 +17,19 @@ You can think of verification as the technical aspect of validity and validation
 5.2: Methods for Verifying a Model/Simulation
 ---------------------------------------------
 
-[In Progress: Update Scheduled 06/02/25]
+[In Progress: To be included in Ver.1.0 update on 06/27/25]
 
 5.3: Methods for Validating a Model/Simulation
 ----------------------------------------------
 
-[In Progress: Update Scheduled 06/02/25]
+[In Progress: To be included in Ver.1.0 update on 06/27/25]
 
 5.4: Pairing Models with Experiment
 -----------------------------------
 
-[In Progress: Update Scheduled 06/04/25]
+[In Progress: To be included in Ver.1.0 update on 06/27/25]
 
 5.5 Sharing Models
 ------------------
 
-[In Progress: Update Scheduled 06/06/25]
+[In Progress: To be included in Ver.1.0 update on 06/27/25]

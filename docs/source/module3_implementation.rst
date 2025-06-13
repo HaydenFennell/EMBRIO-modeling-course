@@ -52,7 +52,7 @@ Several factors can affect the accuracy of our estimates, but one of the most co
 .. image:: images/module3_files/populationGrowth2_output2.png
    :align: center
 
-Notice that as we decrease our time step, the curves begin to align. Also note that our final value for the solved data set does not change, but the final value for our estimates curve does. **[EDITOR NOTE: Bug/bad logic in code logic is causing images not to reflect this statement; will be fixed by next update.]** We can repeat this by decreasing the time step value even further to show that our estimate increasingly reflects the solved curve at smaller values of :math:`dt`.
+Notice that as we decrease our time step, the curves begin to align. Also note that our final value for the solved data set does not change, but the final value for our estimates curve does. We can repeat this by decreasing the time step value even further to show that our estimate increasingly reflects the solved curve at smaller values of :math:`dt`.
 
 .. image:: images/module3_files/populationGrowth2_output3.png
    :align: center
@@ -230,7 +230,7 @@ This method, although more efficient than simple gradient descent, requires the 
 Simplex Method
 ++++++++++++++
 
-The Simplex method uses geometric approximation to find the minimum. 
+**[Simplex method to be included in update on 06/20/25]**
 
 Simulated Annealing
 +++++++++++++++++++
@@ -257,7 +257,7 @@ This process of randomly selecting parameter states and checking to see if it is
 
 i.e., how do we know when our parameter selections are good enough for our purposes?
 
-**[Updating: 04/30/25]**
+**[Content in progress. To be included in update on 06/20/25.]**
 
 3.3: Common Simulation Methodologies (And Their Applications)
 -------------------------------------------------------------
@@ -267,3 +267,5 @@ This section will introduce several different approaches to running simulations 
 * Mechanistic vs. statistical models
 * Monte Carlo methodologies
 * Lattice models, center models, vertex models, etc.
+
+**[Content in progress. To be included in update on 06/20/25.]**
